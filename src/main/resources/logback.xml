@@ -16,6 +16,10 @@
 	<logger name="com.gdtopway" level="DEBUG" additivity="false">
 		<appender-ref ref="STDOUT" />
 	</logger>
+
+	<logger name="org.springframework.webflow" level="DEBUG" additivity="false">
+		<appender-ref ref="STDOUT" />
+	</logger>
 	
 	<root level="INFO">
 		<appender-ref ref="STDOUT" />

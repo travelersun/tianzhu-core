@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+      http://www.springframework.org/schema/webflow/spring-webflow-2.4.xsd"
+>
+
+    <var name="customer" class="com.gdtopway.biz.fund.entity.FundCustomer" />
+
+    <var name="cpicture" class="com.gdtopway.biz.fund.entity.FundCustomerPicture" />
+
+    <var name="caddinfo" class="com.gdtopway.biz.fund.entity.FundCustomerAddInfo" />
+
+    <var name="cocntact" class="com.gdtopway.biz.fund.entity.FunfCustomerContact" />
+
+    <view-state id="index" view="flows/fund/index" model="customer">
+        <transition on="submit" to="personInfo">
+        </transition>
+    </view-state>
+
+    <view-state id="personInfo" view="flows/fund/personInfo" model="customer" >
+        <transition on="submit" to="additionInfo">
+        </transition>
+    </view-state>
+
+    <view-state id="additionInfo" view="flows/fund/additionInfo" model="caddinfo">
+        <transition on="submit" to="accountInfo">
+        </transition>
+        <transition on="preStep" to="personInfo">
+        </transition>
+    </view-state>
+
+    <view-state id="accountInfo" view="flows/fund/accountInfo" model="cpicture">
+        <transition on="submit" to="verify">
+        </transition>
+        <transition on="preStep" to="additionInfo">
+        </transition>
+    </view-state>
+
+    <view-state id="verify" view="flows/fund/verify" model="cocntact">
+        <transition on="submit" to="viewOrder">
+        </transition>
+        <transition on="preStep" to="accountInfo">
+        </transition>
+    </view-state>
+
+    <view-state id="viewOrder" view="flows/fund/viewOrder" model="customer">
+        <transition on="returnToIndex" to="returnToIndex">
+        </transition>
+        <transition on="preStep" to="verify">
+        </transition>
+    </view-state>
+    <end-state id="returnToIndex" view="externalRedirect:/index.jsp">
+    </end-state>
+</flow>
