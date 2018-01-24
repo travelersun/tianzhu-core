@@ -228,7 +228,7 @@
 	<!-- BEGIN FOOTER -->
 	<div class="footer">
 		<div class="footer-inner">
-			&copy; GDTotway 2016
+			&copy; TianZhu 2016
 			<c:if test="${cfg.dev_mode}">
 				<span>V${buildVersion} [${buildTimetamp}]</span>
 			</c:if>
