@@ -12,13 +12,13 @@ import com.gdtopway.core.service.BaseService;
 
 @Service
 @Transactional
-public class SendMessageLogService extends BaseService<SendMessageLog, Long> {
+public class SendMessageLogService extends BaseService<SendMessageLog, String> {
 
     @Autowired
     private SendMessageLogDao sendMessageLogDao;
 
     @Override
-    protected BaseDao<SendMessageLog, Long> getEntityDao() {
+    protected BaseDao<SendMessageLog, String> getEntityDao() {
         return sendMessageLogDao;
     }
 

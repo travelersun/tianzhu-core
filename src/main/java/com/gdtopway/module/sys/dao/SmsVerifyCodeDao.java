@@ -14,7 +14,7 @@ import com.gdtopway.core.dao.jpa.BaseDao;
 import com.gdtopway.module.sys.entity.SmsVerifyCode;
 
 @Repository
-public interface SmsVerifyCodeDao extends BaseDao<SmsVerifyCode, Long> {
+public interface SmsVerifyCodeDao extends BaseDao<SmsVerifyCode, String> {
 
     @QueryHints({ @QueryHint(name = org.hibernate.jpa.QueryHints.HINT_CACHEABLE, value = "true") })
     public SmsVerifyCode findByMobileNum(@Param("mobileNum") String mobileNum);

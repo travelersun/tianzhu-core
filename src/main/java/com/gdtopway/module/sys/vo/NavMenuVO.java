@@ -9,10 +9,10 @@ public class NavMenuVO implements Serializable {
     private static final long serialVersionUID = 9047695739997529718L;
 
     @MetaData(value = "编号")
-    private Long id;
+    private String id;
 
     @MetaData(value = "父编号")
-    private Long parentId;
+    private String parentId;
 
     @MetaData(value = "菜单名称")
     private String name;
@@ -61,11 +61,11 @@ public class NavMenuVO implements Serializable {
         this.initOpen = initOpen;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -77,11 +77,11 @@ public class NavMenuVO implements Serializable {
         this.name = name;
     }
 
-    public Long getParentId() {
+    public String getParentId() {
         return parentId;
     }
 
-    public void setParentId(Long parentId) {
+    public void setParentId(String parentId) {
         this.parentId = parentId;
     }
 

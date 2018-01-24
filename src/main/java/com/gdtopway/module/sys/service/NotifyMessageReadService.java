@@ -12,13 +12,13 @@ import com.gdtopway.module.sys.entity.NotifyMessageRead;
 
 @Service
 @Transactional
-public class NotifyMessageReadService extends BaseService<NotifyMessageRead, Long> {
+public class NotifyMessageReadService extends BaseService<NotifyMessageRead, String> {
 
     @Autowired
     private NotifyMessageReadDao notifyMessageReadDao;
 
     @Override
-    protected BaseDao<NotifyMessageRead, Long> getEntityDao() {
+    protected BaseDao<NotifyMessageRead, String> getEntityDao() {
         return notifyMessageReadDao;
     }
 

@@ -6,6 +6,6 @@ import com.gdtopway.biz.shop.entity.Order;
 import com.gdtopway.core.dao.jpa.BaseDao;
 
 @Repository
-public interface OrderDao extends BaseDao<Order, Long> {
+public interface OrderDao extends BaseDao<Order, String> {
 
 }

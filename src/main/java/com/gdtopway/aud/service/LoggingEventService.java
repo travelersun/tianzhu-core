@@ -11,13 +11,13 @@ import com.gdtopway.core.service.BaseService;
 
 @Service
 @Transactional
-public class LoggingEventService extends BaseService<LoggingEvent, Long> {
+public class LoggingEventService extends BaseService<LoggingEvent, String> {
 
     @Autowired
     private LoggingEventDao loggingEventDao;
 
     @Override
-    protected BaseDao<LoggingEvent, Long> getEntityDao() {
+    protected BaseDao<LoggingEvent, String> getEntityDao() {
         return loggingEventDao;
     }
 }

@@ -33,13 +33,13 @@ import com.google.common.collect.Maps;
 
 @Controller
 @RequestMapping(value = "/admin/auth/department")
-public class DepartmentController extends BaseController<Department, Long> {
+public class DepartmentController extends BaseController<Department, String> {
 
     @Autowired
     private DepartmentService departmentService;
 
     @Override
-    protected BaseService<Department, Long> getEntityService() {
+    protected BaseService<Department, String> getEntityService() {
         return departmentService;
     }
 
@@ -105,7 +105,7 @@ public class DepartmentController extends BaseController<Department, Long> {
 
     @RequiresUser
     @ModelAttribute
-    public void prepareModel(HttpServletRequest request, Model model, @RequestParam(value = "id", required = false) Long id) {
+    public void prepareModel(HttpServletRequest request, Model model, @RequestParam(value = "id", required = false) String id) {
         super.initPrepareModel(request, model, id);
     }
 }

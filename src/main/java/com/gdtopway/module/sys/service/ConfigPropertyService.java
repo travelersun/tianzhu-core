@@ -13,7 +13,7 @@ import com.gdtopway.module.sys.entity.ConfigProperty;
 
 @Service
 @Transactional
-public class ConfigPropertyService extends BaseService<ConfigProperty, Long> {
+public class ConfigPropertyService extends BaseService<ConfigProperty, String> {
 
     @Autowired
     private ConfigPropertyDao configPropertyDao;
@@ -23,7 +23,7 @@ public class ConfigPropertyService extends BaseService<ConfigProperty, Long> {
     }
 
     @Override
-    protected BaseDao<ConfigProperty, Long> getEntityDao() {
+    protected BaseDao<ConfigProperty, String> getEntityDao() {
         return configPropertyDao;
     }
 

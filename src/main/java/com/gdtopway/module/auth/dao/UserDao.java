@@ -12,7 +12,7 @@ import com.gdtopway.module.auth.entity.User;
 import com.gdtopway.module.auth.entity.User.AuthTypeEnum;
 
 @Repository
-public interface UserDao extends BaseDao<User, Long> {
+public interface UserDao extends BaseDao<User, String> {
 
     @QueryHints({ @QueryHint(name = org.hibernate.jpa.QueryHints.HINT_CACHEABLE, value = "true") })
     User findByAuthTypeAndAuthUid(AuthTypeEnum authType, String authUid);

@@ -24,7 +24,7 @@ import com.gdtopway.support.service.DynamicConfigService;
 
 @Service
 @Transactional
-public class SmsVerifyCodeService extends BaseService<SmsVerifyCode, Long> {
+public class SmsVerifyCodeService extends BaseService<SmsVerifyCode, String> {
 
     private static final Logger logger = LoggerFactory.getLogger(SmsVerifyCodeService.class);
 
@@ -37,7 +37,7 @@ public class SmsVerifyCodeService extends BaseService<SmsVerifyCode, Long> {
     private DynamicConfigService dynamicConfigService;
 
     @Override
-    protected BaseDao<SmsVerifyCode, Long> getEntityDao() {
+    protected BaseDao<SmsVerifyCode, String> getEntityDao() {
         return smsVerifyCodeDao;
     }
 

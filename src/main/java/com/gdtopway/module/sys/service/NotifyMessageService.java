@@ -25,7 +25,7 @@ import com.google.common.collect.Lists;
 
 @Service
 @Transactional
-public class NotifyMessageService extends BaseService<NotifyMessage, Long> {
+public class NotifyMessageService extends BaseService<NotifyMessage, String> {
 
     private static final Logger logger = LoggerFactory.getLogger(NotifyMessageService.class);
 
@@ -39,7 +39,7 @@ public class NotifyMessageService extends BaseService<NotifyMessage, Long> {
     private MessagePushService messagePushService;
 
     @Override
-    protected BaseDao<NotifyMessage, Long> getEntityDao() {
+    protected BaseDao<NotifyMessage, String> getEntityDao() {
         return notifyMessageDao;
     }
 
@@ -57,7 +57,7 @@ public class NotifyMessageService extends BaseService<NotifyMessage, Long> {
             return 0L;
         }
 
-        List<Long> scopeEffectiveMessageIds = Lists.newArrayList();
+        List<String> scopeEffectiveMessageIds = Lists.newArrayList();
         for (NotifyMessage nm : scopeEffectiveMessages) {
             scopeEffectiveMessageIds.add(nm.getId());
         }
@@ -225,7 +225,7 @@ public class NotifyMessageService extends BaseService<NotifyMessage, Long> {
             return statedEffectiveMessages;
         }
 
-        List<Long> scopeEffectiveMessageIds = Lists.newArrayList();
+        List<String> scopeEffectiveMessageIds = Lists.newArrayList();
         for (NotifyMessage nm : scopeEffectiveMessages) {
             scopeEffectiveMessageIds.add(nm.getId());
         }

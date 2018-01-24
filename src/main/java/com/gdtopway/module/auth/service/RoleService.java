@@ -19,7 +19,7 @@ import com.google.common.collect.Lists;
 
 @Service
 @Transactional
-public class RoleService extends BaseService<Role, Long> {
+public class RoleService extends BaseService<Role, String> {
 
     @Autowired
     private RoleDao roleDao;
@@ -34,7 +34,7 @@ public class RoleService extends BaseService<Role, Long> {
     private RoleR2PrivilegeDao roleR2PrivilegeDao;
 
     @Override
-    protected BaseDao<Role, Long> getEntityDao() {
+    protected BaseDao<Role, String> getEntityDao() {
         return roleDao;
     }
 
@@ -43,7 +43,7 @@ public class RoleService extends BaseService<Role, Long> {
         return roleDao.findAllCached();
     }
 
-    public void updateRelatedPrivilegeR2s(Role entity, Long[] privielgeIds) {
+    public void updateRelatedPrivilegeR2s(Role entity, String[] privielgeIds) {
         super.updateRelatedR2s(entity, privielgeIds, "roleR2Privileges", "privilege");
     }
 

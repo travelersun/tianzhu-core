@@ -25,18 +25,18 @@ import com.gdtopway.core.web.json.JsonViews;
 @MetaData("配置管理:系统记录:账户登录记录管理")
 @Controller
 @RequestMapping(value = "/admin/aud/user-logon-log")
-public class UserLogonLogController extends BaseController<UserLogonLog, Long> {
+public class UserLogonLogController extends BaseController<UserLogonLog, String> {
 
     @Autowired
     private UserLogonLogService userLogonLogService;
 
     @Override
-    protected BaseService<UserLogonLog, Long> getEntityService() {
+    protected BaseService<UserLogonLog, String> getEntityService() {
         return userLogonLogService;
     }
 
     @ModelAttribute
-    public void prepareModel(HttpServletRequest request, Model model, @RequestParam(value = "id", required = false) Long id) {
+    public void prepareModel(HttpServletRequest request, Model model, @RequestParam(value = "id", required = false) String id) {
         super.initPrepareModel(request, model, id);
     }
 

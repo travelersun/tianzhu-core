@@ -41,7 +41,7 @@ import com.google.common.collect.Maps;
 
 @Controller
 @RequestMapping(value = "/w")
-public class SiteIndexController extends BaseController<SiteUser, Long> {
+public class SiteIndexController extends BaseController<SiteUser, String> {
 
     private final Logger logger = LoggerFactory.getLogger(SiteIndexController.class);
 
@@ -58,7 +58,7 @@ public class SiteIndexController extends BaseController<SiteUser, Long> {
     private DynamicConfigService dynamicConfigService;
 
     @Override
-    protected BaseService<SiteUser, Long> getEntityService() {
+    protected BaseService<SiteUser, String> getEntityService() {
         return siteUserService;
     }
 

@@ -6,6 +6,6 @@ import com.gdtopway.aud.entity.JobRunHist;
 import com.gdtopway.core.dao.jpa.BaseDao;
 
 @Repository
-public interface JobRunHistDao extends BaseDao<JobRunHist, Long> {
+public interface JobRunHistDao extends BaseDao<JobRunHist, String> {
 
 }

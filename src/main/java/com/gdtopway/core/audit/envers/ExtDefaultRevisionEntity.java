@@ -56,9 +56,9 @@ public class ExtDefaultRevisionEntity extends PersistableEntity<Long> {
     @Id
     @RevisionNumber
     @GeneratedValue(generator = "idGenerator")
-    //@GenericGenerator(name = "idGenerator", strategy = "native")
-    @GenericGenerator(name = "idGenerator", strategy = "com.gdtopway.core.entity.SnowflakeIDGenerator",
-	parameters = { @Parameter(name = "workerId", value = "0") ,@Parameter(name = "datacenterId", value = "0")})
+    @GenericGenerator(name = "idGenerator", strategy = "native")
+    //@GenericGenerator(name = "idGenerator", strategy = "com.gdtopway.core.entity.SnowflakeIDGenerator",
+	//parameters = { @Parameter(name = "workerId", value = "0") ,@Parameter(name = "datacenterId", value = "0")})
     @Column(nullable = false, unique = true)
     @JsonSerialize(using = IdSerialize.class)
     private Long rev;

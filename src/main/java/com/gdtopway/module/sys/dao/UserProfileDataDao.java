@@ -9,7 +9,7 @@ import com.gdtopway.module.auth.entity.User;
 import com.gdtopway.module.sys.entity.UserProfileData;
 
 @Repository
-public interface UserProfileDataDao extends BaseDao<UserProfileData, Long> {
+public interface UserProfileDataDao extends BaseDao<UserProfileData, String> {
 
     UserProfileData findByUserAndCode(User user, String code);
 

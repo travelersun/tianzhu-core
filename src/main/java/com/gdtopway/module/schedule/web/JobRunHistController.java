@@ -22,13 +22,13 @@ import com.gdtopway.core.web.BaseController;
 
 @Controller
 @RequestMapping(value = "/admin/schedule/job-run-hist")
-public class JobRunHistController extends BaseController<JobRunHist, Long> {
+public class JobRunHistController extends BaseController<JobRunHist, String> {
 
     @Autowired
     private JobRunHistService jobRunHistService;
 
     @Override
-    protected BaseService<JobRunHist, Long> getEntityService() {
+    protected BaseService<JobRunHist, String> getEntityService() {
         return jobRunHistService;
     }
 
@@ -54,7 +54,7 @@ public class JobRunHistController extends BaseController<JobRunHist, Long> {
 
     @RequiresUser
     @ModelAttribute
-    public void prepareModel(HttpServletRequest request, Model model, @RequestParam(value = "id", required = false) Long id) {
+    public void prepareModel(HttpServletRequest request, Model model, @RequestParam(value = "id", required = false) String id) {
         super.initPrepareModel(request, model, id);
     }
 }

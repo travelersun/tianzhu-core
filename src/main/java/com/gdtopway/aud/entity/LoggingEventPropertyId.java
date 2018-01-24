@@ -23,7 +23,7 @@ public class LoggingEventPropertyId implements java.io.Serializable {
     private static final long serialVersionUID = -8453417940199653002L;
 
     @Column(name = "event_id", nullable = false)
-    private Long eventId;
+    private String eventId;
 
     @Column(name = "mapped_key", nullable = false, length = 2000)
     private String mappedKey;
@@ -31,7 +31,7 @@ public class LoggingEventPropertyId implements java.io.Serializable {
     public LoggingEventPropertyId() {
     }
 
-    public LoggingEventPropertyId(Long eventId, String mappedKey) {
+    public LoggingEventPropertyId(String eventId, String mappedKey) {
         this.eventId = eventId;
         this.mappedKey = mappedKey;
     }

@@ -50,18 +50,18 @@ import com.gdtopway.core.web.json.DateTimeJsonSerializer;
 @Table(name = "logging_event")
 @Cache(usage = CacheConcurrencyStrategy.NONE)
 @MetaData(value = "日志事件", comments = "用于基于Logback日志DBAppender的ERROR日志数据存取")
-public class LoggingEvent extends PersistableEntity<Long> {
+public class LoggingEvent extends PersistableEntity<String> {
 
     private static final long serialVersionUID = 3807617732053699145L;
 
     @Id
     @GeneratedValue(generator = "idGenerator")
-    //@GenericGenerator(name = "idGenerator", strategy = "native")
-    @GenericGenerator(name = "idGenerator", strategy = "com.gdtopway.core.entity.SnowflakeIDGenerator",
-	parameters = { @Parameter(name = "workerId", value = "0") ,@Parameter(name = "datacenterId", value = "0")})
+    @GenericGenerator(name = "idGenerator", strategy = "uuid")
+    //@GenericGenerator(name = "idGenerator", strategy = "com.gdtopway.core.entity.SnowflakeIDGenerator",
+	//parameters = { @Parameter(name = "workerId", value = "0") ,@Parameter(name = "datacenterId", value = "0")})
     @Column(name = "event_id",nullable = false, unique = true,precision = 19,scale = 0)
-    @JsonSerialize(using = IdSerialize.class)
-    private Long id;
+    //@JsonSerialize(using = IdSerialize.class)
+    private String id;
 
     private Long timestmp;
 

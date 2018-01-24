@@ -16,13 +16,13 @@ import com.google.common.collect.Maps;
 
 @Service
 @Transactional
-public class UserProfileDataService extends BaseService<UserProfileData, Long> {
+public class UserProfileDataService extends BaseService<UserProfileData, String> {
 
     @Autowired
     private UserProfileDataDao userProfileDataDao;
 
     @Override
-    protected BaseDao<UserProfileData, Long> getEntityDao() {
+    protected BaseDao<UserProfileData, String> getEntityDao() {
         return userProfileDataDao;
     }
 

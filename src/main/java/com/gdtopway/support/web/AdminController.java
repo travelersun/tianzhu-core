@@ -277,7 +277,7 @@ public class AdminController {
     @MetaData("公告消息读取")
     @RequiresRoles(value = AuthUserDetails.ROLE_MGMT_USER)
     @RequestMapping(value = "/admin/profile/notify-message-view/{messageId}", method = RequestMethod.GET)
-    public String notifyMessageView(@PathVariable("messageId") Long messageId, Model model) {
+    public String notifyMessageView(@PathVariable("messageId") String messageId, Model model) {
         User user = AuthContextHolder.findAuthUser();
         NotifyMessage notifyMessage = notifyMessageService.findOne(messageId);
         notifyMessageService.processUserRead(notifyMessage, user);
@@ -316,7 +316,7 @@ public class AdminController {
     @MetaData("个人消息读取")
     @RequiresRoles(value = AuthUserDetails.ROLE_MGMT_USER)
     @RequestMapping(value = "/admin/profile/user-message-view/{messageId}", method = RequestMethod.GET)
-    public String userMessageView(@PathVariable("messageId") Long messageId, Model model) {
+    public String userMessageView(@PathVariable("messageId") String messageId, Model model) {
         User user = AuthContextHolder.findAuthUser();
         UserMessage userMessage = userMessageService.findOne(messageId);
         userMessageService.processUserRead(userMessage, user);

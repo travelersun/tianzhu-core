@@ -12,13 +12,13 @@ import com.gdtopway.core.util.DateUtils;
 
 @Service
 @Transactional
-public class OrderService extends BaseService<Order, Long> {
+public class OrderService extends BaseService<Order, String> {
 
     @Autowired
     private OrderDao orderDao;
 
     @Override
-    protected BaseDao<Order, Long> getEntityDao() {
+    protected BaseDao<Order, String> getEntityDao() {
         return orderDao;
     }
 

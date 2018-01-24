@@ -29,13 +29,13 @@ import com.gdtopway.module.sys.service.ConfigPropertyService;
 @MetaData("参数管理")
 @Controller
 @RequestMapping(value = "/admin/sys/config-property")
-public class ConfigPropertyController extends BaseController<ConfigProperty, Long> {
+public class ConfigPropertyController extends BaseController<ConfigProperty, String> {
 
     @Autowired
     private ConfigPropertyService configPropertyService;
 
     @Override
-    protected BaseService<ConfigProperty, Long> getEntityService() {
+    protected BaseService<ConfigProperty, String> getEntityService() {
         return configPropertyService;
     }
 
@@ -88,7 +88,7 @@ public class ConfigPropertyController extends BaseController<ConfigProperty, Lon
 
     @RequiresUser
     @ModelAttribute
-    public void prepareModel(HttpServletRequest request, Model model, @RequestParam(value = "id", required = false) Long id) {
+    public void prepareModel(HttpServletRequest request, Model model, @RequestParam(value = "id", required = false) String id) {
         super.initPrepareModel(request, model, id);
     }
 }

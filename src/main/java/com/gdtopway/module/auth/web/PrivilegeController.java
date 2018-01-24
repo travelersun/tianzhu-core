@@ -18,13 +18,13 @@ import com.gdtopway.module.auth.service.PrivilegeService;
 
 @Controller
 @RequestMapping(value = "/admin/auth/privilege")
-public class PrivilegeController extends BaseController<Privilege, Long> {
+public class PrivilegeController extends BaseController<Privilege, String> {
 
     @Autowired
     private PrivilegeService privilegeService;
 
     @Override
-    protected BaseService<Privilege, Long> getEntityService() {
+    protected BaseService<Privilege, String> getEntityService() {
         return privilegeService;
     }
 

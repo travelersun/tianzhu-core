@@ -15,7 +15,7 @@ public class UserMessageServiceTest extends SpringTransactionalTestCase {
     @Test
     public void findSiteCountToRead() {
         User user = new User();
-        user.setId(1L);
+        user.setId("1");
         Long count = userMessageService.findCountToRead(user);
         logger.debug("findSiteCountToRead Count: {}", count);
     }

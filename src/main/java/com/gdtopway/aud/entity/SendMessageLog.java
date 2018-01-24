@@ -45,18 +45,18 @@ import com.gdtopway.core.web.json.JsonViews;
 @Table(name = "sys_SendMessageLog")
 @Cache(usage = CacheConcurrencyStrategy.NONE)
 @MetaData(value = "发送消息记录", comments = "包括电子邮件，短信，推送等消息流水记录")
-public class SendMessageLog extends PersistableEntity<Long> {
+public class SendMessageLog extends PersistableEntity<String> {
 
     private static final long serialVersionUID = -541805294603254373L;
 
     @Id
     @GeneratedValue(generator = "idGenerator")
-    //@GenericGenerator(name = "idGenerator", strategy = "native")
-    @GenericGenerator(name = "idGenerator", strategy = "com.gdtopway.core.entity.SnowflakeIDGenerator",
-	parameters = { @Parameter(name = "workerId", value = "0") ,@Parameter(name = "datacenterId", value = "0")})
+    @GenericGenerator(name = "idGenerator", strategy = "uuid")
+    //@GenericGenerator(name = "idGenerator", strategy = "com.gdtopway.core.entity.SnowflakeIDGenerator",
+	//parameters = { @Parameter(name = "workerId", value = "0") ,@Parameter(name = "datacenterId", value = "0")})
     @Column(nullable = false, unique = true,precision = 19,scale = 0)
-    @JsonSerialize(using = IdSerialize.class)
-    private Long id;
+    //@JsonSerialize(using = IdSerialize.class)
+    private String id;
 
     @MetaData(value = "消息接受者")
     @Column(length = 300, nullable = false)
@@ -68,7 +68,7 @@ public class SendMessageLog extends PersistableEntity<Long> {
 
     @MetaData(value = "消息内容", comments = "可以是无格式的TEXT或格式化的HTMl")
     @Lob
-    @Column(nullable = false)
+    @Column(nullable = true)
     @JsonIgnore
     private String message;
 

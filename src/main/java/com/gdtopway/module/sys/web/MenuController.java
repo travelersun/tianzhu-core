@@ -36,18 +36,18 @@ import com.google.common.collect.Maps;
 
 @Controller
 @RequestMapping(value = "/admin/sys/menu")
-public class MenuController extends BaseController<Menu, Long> {
+public class MenuController extends BaseController<Menu, String> {
 
     @Autowired
     private MenuService menuService;
 
     @Override
-    protected BaseService<Menu, Long> getEntityService() {
+    protected BaseService<Menu, String> getEntityService() {
         return menuService;
     }
 
     @Override
-    protected Menu buildDetachedBindingEntity(Long id) {
+    protected Menu buildDetachedBindingEntity(String id) {
         return menuService.findDetachedOne(id, "parent");
     }
 
@@ -84,7 +84,7 @@ public class MenuController extends BaseController<Menu, Long> {
     @RequiresPermissions("配置管理:系统管理:菜单配置")
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     @ResponseBody
-    public OperationResult delete(@RequestParam("id") Long... id) {
+    public OperationResult delete(@RequestParam("id") String... id) {
         return super.delete(id);
     }
 
@@ -109,7 +109,7 @@ public class MenuController extends BaseController<Menu, Long> {
 
     @RequiresUser
     @ModelAttribute
-    public void prepareModel(HttpServletRequest request, Model model, @RequestParam(value = "id", required = false) Long id) {
+    public void prepareModel(HttpServletRequest request, Model model, @RequestParam(value = "id", required = false) String id) {
         super.initPrepareModel(request, model, id);
     }
 }

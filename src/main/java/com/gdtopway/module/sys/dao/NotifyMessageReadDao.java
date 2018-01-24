@@ -15,16 +15,16 @@ import com.gdtopway.module.sys.entity.NotifyMessage;
 import com.gdtopway.module.sys.entity.NotifyMessageRead;
 
 @Repository
-public interface NotifyMessageReadDao extends BaseDao<NotifyMessageRead, Long> {
+public interface NotifyMessageReadDao extends BaseDao<NotifyMessageRead, String> {
 
     NotifyMessageRead findByNotifyMessageAndReadUser(NotifyMessage notifyMessage, User user);
 
     @Query("from NotifyMessageRead where readUser.id=:readUserId and notifyMessage.id in (:scopeEffectiveMessageIds)")
     @QueryHints({ @QueryHint(name = org.hibernate.jpa.QueryHints.HINT_CACHEABLE, value = "true") })
-    public List<NotifyMessageRead> findByReadUserAndNotifyMessageIn(@Param("readUserId") Long readUserId,
-            @Param("scopeEffectiveMessageIds") List<Long> scopeEffectiveMessageIds);
+    public List<NotifyMessageRead> findByReadUserAndNotifyMessageIn(@Param("readUserId") String readUserId,
+            @Param("scopeEffectiveMessageIds") List<String> scopeEffectiveMessageIds);
 
     @Query("select count(nm) from NotifyMessageRead nm where nm.notifyMessage.id=:notifyMessageId")
     @QueryHints({ @QueryHint(name = org.hibernate.jpa.QueryHints.HINT_CACHEABLE, value = "true") })
-    Integer countByNotifyMessage(@Param("notifyMessageId") Long notifyMessageId);
+    Integer countByNotifyMessage(@Param("notifyMessageId") String notifyMessageId);
 }

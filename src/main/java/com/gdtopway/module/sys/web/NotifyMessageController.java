@@ -40,7 +40,7 @@ import com.gdtopway.module.sys.service.NotifyMessageService;
 
 @Controller
 @RequestMapping(value = "/admin/sys/notify-message")
-public class NotifyMessageController extends BaseController<NotifyMessage, Long> {
+public class NotifyMessageController extends BaseController<NotifyMessage, String> {
 
     @Autowired
     private NotifyMessageService notifyMessageService;
@@ -52,7 +52,7 @@ public class NotifyMessageController extends BaseController<NotifyMessage, Long>
     private DataDictService dataDictService;
 
     @Override
-    protected BaseService<NotifyMessage, Long> getEntityService() {
+    protected BaseService<NotifyMessage, String> getEntityService() {
         return notifyMessageService;
     }
 
@@ -65,7 +65,7 @@ public class NotifyMessageController extends BaseController<NotifyMessage, Long>
 
     @RequiresUser
     @ModelAttribute
-    public void prepareModel(HttpServletRequest request, Model model, @RequestParam(value = "id", required = false) Long id) {
+    public void prepareModel(HttpServletRequest request, Model model, @RequestParam(value = "id", required = false) String id) {
         super.initPrepareModel(request, model, id);
     }
 

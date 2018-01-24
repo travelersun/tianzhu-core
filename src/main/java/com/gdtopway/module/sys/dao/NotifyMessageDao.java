@@ -12,7 +12,7 @@ import com.gdtopway.core.dao.jpa.BaseDao;
 import com.gdtopway.module.sys.entity.NotifyMessage;
 
 @Repository
-public interface NotifyMessageDao extends BaseDao<NotifyMessage, Long> {
+public interface NotifyMessageDao extends BaseDao<NotifyMessage, String> {
 
     @Query("from NotifyMessage where effective=true order by orderRank desc,publishTime desc")
     @QueryHints({ @QueryHint(name = org.hibernate.jpa.QueryHints.HINT_CACHEABLE, value = "true") })

@@ -35,15 +35,15 @@ import com.gdtopway.core.util.id.IdSerialize;
 @Table(name = "auth_UserExt")
 @MetaData(value = "用户扩展信息对象")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class UserExt extends BaseEntity<Long> {
+public class UserExt extends BaseEntity<String> {
 
     private static final long serialVersionUID = 8977448800400578128L;
 
     @MetaData(value = "共享主键", comments = "对应主对像ID")
     @Id
     @Column(nullable = false, unique = true,precision = 19,scale = 0)
-    @JsonSerialize(using = IdSerialize.class)
-    private Long id;
+    //@JsonSerialize(using = IdSerialize.class)
+    private String id;
 
     @MetaData(value = "注册时间")
     @DateTimeFormat(pattern = DateUtils.DEFAULT_TIME_FORMAT)

@@ -49,7 +49,7 @@ public class RevisionEntityService extends BaseService<ExtDefaultRevisionEntity,
      * @return
      */
     @Transactional(readOnly = true)
-    public List<EntityRevision> findEntityRevisions(final Class<?> entityClass, final Long id, String property, Boolean changed) {
+    public List<EntityRevision> findEntityRevisions(final Class<?> entityClass, final String id, String property, Boolean changed) {
         List<EntityRevision> entityRevisions = Lists.newArrayList();
         AuditQuery auditQuery = AuditReaderFactory.get(entityManager).createQuery().forRevisionsOfEntity(entityClass, false, true);
         auditQuery.add(AuditEntity.id().eq(id)).addOrder(AuditEntity.revisionNumber().desc());
@@ -81,7 +81,7 @@ public class RevisionEntityService extends BaseService<ExtDefaultRevisionEntity,
      * @return
      */
     @Transactional(readOnly = true)
-    public List<EntityRevision> findEntityRevisions(final Class<?> entityClass, Long id, Number... revs) {
+    public List<EntityRevision> findEntityRevisions(final Class<?> entityClass, String id, Number... revs) {
         List<EntityRevision> entityRevisions = Lists.newArrayList();
         AuditQuery auditQuery = AuditReaderFactory.get(entityManager).createQuery().forRevisionsOfEntity(entityClass, false, true);
         if (id != null) {

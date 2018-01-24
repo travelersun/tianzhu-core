@@ -43,18 +43,18 @@ import com.gdtopway.module.auth.entity.User.AuthTypeEnum;
 @Table(name = "auth_UserLogonLog")
 @Cache(usage = CacheConcurrencyStrategy.NONE)
 @MetaData(value = "用户登录登出历史记录")
-public class UserLogonLog extends PersistableEntity<Long> {
+public class UserLogonLog extends PersistableEntity<String> {
 
     private static final long serialVersionUID = 4034691676061136485L;
 
     @Id
     @GeneratedValue(generator = "idGenerator")
-    //@GenericGenerator(name = "idGenerator", strategy = "native")
-    @GenericGenerator(name = "idGenerator", strategy = "com.gdtopway.core.entity.SnowflakeIDGenerator",
-	parameters = { @Parameter(name = "workerId", value = "0") ,@Parameter(name = "datacenterId", value = "0")})
+    @GenericGenerator(name = "idGenerator", strategy = "uuid")
+    //@GenericGenerator(name = "idGenerator", strategy = "com.gdtopway.core.entity.SnowflakeIDGenerator",
+	//parameters = { @Parameter(name = "workerId", value = "0") ,@Parameter(name = "datacenterId", value = "0")})
     @Column(nullable = false, unique = true,precision = 19,scale = 0)
-    @JsonSerialize(using = IdSerialize.class)
-    private Long id;
+    //@JsonSerialize(using = IdSerialize.class)
+    private String id;
 
     @MetaData(value = "账号全局唯一标识", comments = "同时作为SYS类型用户登录密码的SALT")
     @Column(length = 64, nullable = false)

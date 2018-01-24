@@ -15,7 +15,7 @@ import com.gdtopway.core.service.BaseService;
 
 @Service
 @Transactional
-public class UserLogonLogService extends BaseService<UserLogonLog, Long> {
+public class UserLogonLogService extends BaseService<UserLogonLog, String> {
 
     @Autowired
     private UserLogonLogDao userLogonLogDao;
@@ -24,7 +24,7 @@ public class UserLogonLogService extends BaseService<UserLogonLog, Long> {
     private MyBatisDao myBatisDao;
 
     @Override
-    protected BaseDao<UserLogonLog, Long> getEntityDao() {
+    protected BaseDao<UserLogonLog, String> getEntityDao() {
         return userLogonLogDao;
     }
 

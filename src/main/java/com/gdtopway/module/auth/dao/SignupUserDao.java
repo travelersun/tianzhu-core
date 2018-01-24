@@ -11,7 +11,7 @@ import com.gdtopway.core.dao.jpa.BaseDao;
 import com.gdtopway.module.auth.entity.SignupUser;
 
 @Repository
-public interface SignupUserDao extends BaseDao<SignupUser, Long> {
+public interface SignupUserDao extends BaseDao<SignupUser, String> {
     @QueryHints({ @QueryHint(name = org.hibernate.jpa.QueryHints.HINT_CACHEABLE, value = "true") })
     SignupUser findByAuthUid(String authUid);
 

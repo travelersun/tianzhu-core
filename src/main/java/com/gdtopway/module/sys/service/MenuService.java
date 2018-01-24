@@ -30,7 +30,7 @@ import com.google.common.collect.Sets;
 
 @Service
 @Transactional
-public class MenuService extends BaseService<Menu, Long> {
+public class MenuService extends BaseService<Menu, String> {
 
     private static final Logger logger = LoggerFactory.getLogger(MenuService.class);
 
@@ -38,7 +38,7 @@ public class MenuService extends BaseService<Menu, Long> {
     private MenuDao menuDao;
 
     @Override
-    protected BaseDao<Menu, Long> getEntityDao() {
+    protected BaseDao<Menu, String> getEntityDao() {
         return menuDao;
     }
 

@@ -28,18 +28,18 @@ import com.gdtopway.core.web.view.OperationResult;
 @MetaData("日志事件管理")
 @Controller
 @RequestMapping(value = "/admin/aud/logging-event")
-public class LoggingEventController extends BaseController<LoggingEvent, Long> {
+public class LoggingEventController extends BaseController<LoggingEvent, String> {
 
     @Autowired
     private LoggingEventService loggingEventService;
 
     @Override
-    protected BaseService<LoggingEvent, Long> getEntityService() {
+    protected BaseService<LoggingEvent, String> getEntityService() {
         return loggingEventService;
     }
 
     @ModelAttribute
-    public void prepareModel(HttpServletRequest request, Model model, @RequestParam(value = "id", required = false) Long id) {
+    public void prepareModel(HttpServletRequest request, Model model, @RequestParam(value = "id", required = false) String id) {
         super.initPrepareModel(request, model, id);
     }
 

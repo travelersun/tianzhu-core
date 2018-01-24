@@ -7,6 +7,6 @@ import com.gdtopway.aud.entity.SendMessageLog;
 import com.gdtopway.core.dao.jpa.BaseDao;
 
 @Repository
-public interface SendMessageLogDao extends BaseDao<SendMessageLog, Long> {
+public interface SendMessageLogDao extends BaseDao<SendMessageLog, String> {
 
 }

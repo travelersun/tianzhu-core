@@ -14,7 +14,7 @@ import com.gdtopway.core.dao.jpa.BaseDao;
 import com.gdtopway.module.auth.entity.Privilege;
 
 @Repository
-public interface PrivilegeDao extends BaseDao<Privilege, Long> {
+public interface PrivilegeDao extends BaseDao<Privilege, String> {
 
     @Query("from Privilege order by code asc")
     @QueryHints({ @QueryHint(name = org.hibernate.jpa.QueryHints.HINT_CACHEABLE, value = "true") })

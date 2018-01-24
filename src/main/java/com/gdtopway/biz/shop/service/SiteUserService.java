@@ -13,7 +13,7 @@ import com.gdtopway.module.auth.service.UserService;
 
 @Service
 @Transactional
-public class SiteUserService extends BaseService<SiteUser, Long> {
+public class SiteUserService extends BaseService<SiteUser, String> {
 
     @Autowired
     private SiteUserDao siteUserDao;
@@ -22,7 +22,7 @@ public class SiteUserService extends BaseService<SiteUser, Long> {
     private UserService userService;
 
     @Override
-    protected BaseDao<SiteUser, Long> getEntityDao() {
+    protected BaseDao<SiteUser, String> getEntityDao() {
         return siteUserDao;
     }
 

@@ -5,5 +5,5 @@ import com.gdtopway.core.dao.jpa.BaseDao;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface FundCustomerPictureDao extends BaseDao<FundCustomerPicture, Long> {
+public interface FundCustomerPictureDao extends BaseDao<FundCustomerPicture, String> {
 }

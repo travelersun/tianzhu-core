@@ -27,7 +27,7 @@ import com.google.common.collect.Maps;
 
 @Service
 @Transactional
-public class JobBeanCfgService extends BaseService<JobBeanCfg, Long> {
+public class JobBeanCfgService extends BaseService<JobBeanCfg, String> {
 
     private static Logger logger = LoggerFactory.getLogger(JobBeanCfgService.class);
 
@@ -35,7 +35,7 @@ public class JobBeanCfgService extends BaseService<JobBeanCfg, Long> {
     private JobBeanCfgDao jobBeanCfgDao;
 
     @Override
-    protected BaseDao<JobBeanCfg, Long> getEntityDao() {
+    protected BaseDao<JobBeanCfg, String> getEntityDao() {
         return jobBeanCfgDao;
     }
 

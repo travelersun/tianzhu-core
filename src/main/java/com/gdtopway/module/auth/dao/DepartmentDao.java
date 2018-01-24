@@ -10,7 +10,7 @@ import com.gdtopway.core.dao.jpa.BaseDao;
 import com.gdtopway.module.auth.entity.Department;
 
 @Repository
-public interface DepartmentDao extends BaseDao<Department, Long> {
+public interface DepartmentDao extends BaseDao<Department, String> {
 
     @Query("from Department")
     @QueryHints({ @QueryHint(name = org.hibernate.jpa.QueryHints.HINT_CACHEABLE, value = "true") })

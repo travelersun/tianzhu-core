@@ -40,18 +40,18 @@ import com.gdtopway.core.web.json.DateTimeJsonSerializer;
 @Table(name = "sche_JobRunHist")
 @MetaData(value = "任务计划运行历史记录")
 @Cache(usage = CacheConcurrencyStrategy.NONE)
-public class JobRunHist extends PersistableEntity<Long> {
+public class JobRunHist extends PersistableEntity<String> {
 
     private static final long serialVersionUID = -5759986321900611939L;
 
     @Id
     @GeneratedValue(generator = "idGenerator")
-    @GenericGenerator(name = "idGenerator", strategy = "com.gdtopway.core.entity.SnowflakeIDGenerator",
-	parameters = { @Parameter(name = "workerId", value = "0") ,@Parameter(name = "datacenterId", value = "0")})
-    //@GenericGenerator(name = "idGenerator", strategy = "native")
+    //@GenericGenerator(name = "idGenerator", strategy = "com.gdtopway.core.entity.SnowflakeIDGenerator",
+	//parameters = { @Parameter(name = "workerId", value = "0") ,@Parameter(name = "datacenterId", value = "0")})
+    @GenericGenerator(name = "idGenerator", strategy = "uuid")
     @Column(nullable = false, unique = true,precision = 19,scale = 0)
-    @JsonSerialize(using = IdSerialize.class)
-    private Long id;
+    //@JsonSerialize(using = IdSerialize.class)
+    private String id;
 
     @MetaData(value = "Job名称")
     @Column(length = 64, nullable = true)

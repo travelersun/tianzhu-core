@@ -28,18 +28,18 @@ import com.gdtopway.core.web.view.OperationResult;
 @MetaData("发送消息记录管理")
 @Controller
 @RequestMapping(value = "/admin/aud/send-message-log")
-public class SendMessageLogController extends BaseController<SendMessageLog, Long> {
+public class SendMessageLogController extends BaseController<SendMessageLog, String> {
 
     @Autowired
     private SendMessageLogService sendMessageLogService;
 
     @Override
-    protected BaseService<SendMessageLog, Long> getEntityService() {
+    protected BaseService<SendMessageLog, String> getEntityService() {
         return sendMessageLogService;
     }
 
     @ModelAttribute
-    public void prepareModel(HttpServletRequest request, Model model, @RequestParam(value = "id", required = false) Long id) {
+    public void prepareModel(HttpServletRequest request, Model model, @RequestParam(value = "id", required = false) String id) {
         super.initPrepareModel(request, model, id);
     }
 
@@ -82,7 +82,7 @@ public class SendMessageLogController extends BaseController<SendMessageLog, Lon
     @RequiresPermissions("配置管理:系统记录:发送消息记录")
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     @ResponseBody
-    public OperationResult delete(@RequestParam("ids") Long... ids) {
+    public OperationResult delete(@RequestParam("ids") String... ids) {
         return super.delete(ids);
     }
 

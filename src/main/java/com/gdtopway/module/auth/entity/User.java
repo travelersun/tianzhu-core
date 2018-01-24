@@ -130,11 +130,11 @@ public class User extends BaseNativeEntity {
     @Transient
     @Getter(AccessLevel.NONE)
     @JsonIgnore
-    private Long[] selectedRoleIds;
+    private String[] selectedRoleIds;
 
-    public Long[] getSelectedRoleIds() {
+    public String[] getSelectedRoleIds() {
         if (userR2Roles != null && selectedRoleIds == null) {
-            selectedRoleIds = new Long[userR2Roles.size()];
+            selectedRoleIds = new String[userR2Roles.size()];
             for (int i = 0; i < selectedRoleIds.length; i++) {
                 selectedRoleIds[i] = userR2Roles.get(i).getRole().getId();
             }

@@ -7,7 +7,7 @@ import com.gdtopway.core.dao.jpa.BaseDao;
 import com.gdtopway.module.auth.entity.User;
 
 @Repository
-public interface SiteUserDao extends BaseDao<SiteUser, Long> {
+public interface SiteUserDao extends BaseDao<SiteUser, String> {
 
     SiteUser findByUser(User user);
 }

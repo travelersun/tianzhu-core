@@ -23,7 +23,7 @@ import com.gdtopway.support.service.SmsService.SmsMessageTypeEnum;
 
 @Service
 @Transactional
-public class UserMessageService extends BaseService<UserMessage, Long> {
+public class UserMessageService extends BaseService<UserMessage, String> {
 
     private static final Logger logger = LoggerFactory.getLogger(UserMessageService.class);
 
@@ -40,7 +40,7 @@ public class UserMessageService extends BaseService<UserMessage, Long> {
     private MessagePushService messagePushService;
 
     @Override
-    protected BaseDao<UserMessage, Long> getEntityDao() {
+    protected BaseDao<UserMessage, String> getEntityDao() {
         return userMessageDao;
     }
 

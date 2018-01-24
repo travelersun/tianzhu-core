@@ -31,7 +31,7 @@ import com.google.common.collect.Sets;
 
 @Controller
 @RequestMapping(value = "/admin/auth/role")
-public class RoleController extends BaseController<Role, Long> {
+public class RoleController extends BaseController<Role, String> {
 
     @Autowired
     private RoleService roleService;
@@ -40,13 +40,13 @@ public class RoleController extends BaseController<Role, Long> {
     private PrivilegeService privilegeService;
 
     @Override
-    protected BaseService<Role, Long> getEntityService() {
+    protected BaseService<Role, String> getEntityService() {
         return roleService;
     }
 
     @RequiresUser
     @ModelAttribute
-    public void prepareModel(HttpServletRequest request, Model model, @RequestParam(value = "id", required = false) Long id) {
+    public void prepareModel(HttpServletRequest request, Model model, @RequestParam(value = "id", required = false) String id) {
         Role role = super.initPrepareModel(request, model, id);
         if (role.isNew()) {
             role.setCode("ROLE_");
@@ -88,14 +88,14 @@ public class RoleController extends BaseController<Role, Long> {
     @RequiresPermissions("配置管理:权限管理:角色配置")
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     @ResponseBody
-    public OperationResult delete(@RequestParam("ids") Long... ids) {
+    public OperationResult delete(@RequestParam("ids") String... ids) {
         return super.delete(ids);
     }
 
     @RequiresPermissions("配置管理:权限管理:角色配置")
     @RequestMapping(value = "/privileges", method = RequestMethod.GET)
     public String privilegeR2sShow(@ModelAttribute("entity") Role entity, Model model) {
-        Set<Long> r2PrivilegeIds = Sets.newHashSet();
+        Set<String> r2PrivilegeIds = Sets.newHashSet();
         List<RoleR2Privilege> r2s = entity.getRoleR2Privileges();
         if (CollectionUtils.isNotEmpty(r2s)) {
             for (RoleR2Privilege r2 : r2s) {
@@ -110,7 +110,7 @@ public class RoleController extends BaseController<Role, Long> {
     @RequestMapping(value = "/privileges", method = RequestMethod.POST)
     @ResponseBody
     public OperationResult privilegeR2sSave(@ModelAttribute("entity") Role entity,
-            @RequestParam(value = "privilegeIds", required = false) Long[] privilegeIds) {
+            @RequestParam(value = "privilegeIds", required = false) String[] privilegeIds) {
         roleService.updateRelatedPrivilegeR2s(entity, privilegeIds);
         return OperationResult.buildSuccessResult();
     }

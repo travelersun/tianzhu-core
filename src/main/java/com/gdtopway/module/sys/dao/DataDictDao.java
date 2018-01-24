@@ -13,7 +13,7 @@ import com.gdtopway.core.dao.jpa.BaseDao;
 import com.gdtopway.module.sys.entity.DataDict;
 
 @Repository
-public interface DataDictDao extends BaseDao<DataDict, Long> {
+public interface DataDictDao extends BaseDao<DataDict, String> {
 
     @QueryHints({ @QueryHint(name = org.hibernate.jpa.QueryHints.HINT_CACHEABLE, value = "true") })
     @Query("from DataDict where primaryKey=:primaryKey and parent is null")
@@ -21,7 +21,7 @@ public interface DataDictDao extends BaseDao<DataDict, Long> {
 
     @Query("from DataDict where parent.id=:parentId and disabled=false order by orderRank desc")
     @QueryHints({ @QueryHint(name = org.hibernate.jpa.QueryHints.HINT_CACHEABLE, value = "true") })
-    public List<DataDict> findEnabledChildrenByParentId(@Param("parentId") Long parentId);
+    public List<DataDict> findEnabledChildrenByParentId(@Param("parentId") String parentId);
 
     @Query("from DataDict order by parent asc,orderRank desc")
     @QueryHints({ @QueryHint(name = org.hibernate.jpa.QueryHints.HINT_CACHEABLE, value = "true") })

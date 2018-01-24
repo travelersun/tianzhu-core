@@ -11,13 +11,13 @@ import com.gdtopway.core.service.BaseService;
 
 @Service
 @Transactional
-public class JobRunHistService extends BaseService<JobRunHist, Long> {
+public class JobRunHistService extends BaseService<JobRunHist, String> {
 
     @Autowired
     private JobRunHistDao jobRunHistDao;
 
     @Override
-    protected BaseDao<JobRunHist, Long> getEntityDao() {
+    protected BaseDao<JobRunHist, String> getEntityDao() {
         return jobRunHistDao;
     }
 }

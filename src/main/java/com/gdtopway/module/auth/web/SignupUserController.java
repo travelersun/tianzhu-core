@@ -30,7 +30,7 @@ import com.gdtopway.support.service.DynamicConfigService;
 
 @Controller
 @RequestMapping(value = "/admin/auth/signup-user")
-public class SignupUserController extends BaseController<SignupUser, Long> {
+public class SignupUserController extends BaseController<SignupUser, String> {
 
     @Autowired
     private UserService userService;
@@ -45,13 +45,13 @@ public class SignupUserController extends BaseController<SignupUser, Long> {
     private RoleService roleService;
 
     @Override
-    protected BaseService<SignupUser, Long> getEntityService() {
+    protected BaseService<SignupUser, String> getEntityService() {
         return signupUserService;
     }
 
     @RequiresUser
     @ModelAttribute
-    public void prepareModel(HttpServletRequest request, Model model, @RequestParam(value = "id", required = false) Long id) {
+    public void prepareModel(HttpServletRequest request, Model model, @RequestParam(value = "id", required = false) String id) {
         super.initPrepareModel(request, model, id);
     }
 
@@ -93,7 +93,7 @@ public class SignupUserController extends BaseController<SignupUser, Long> {
     @RequiresPermissions("配置管理:权限管理:注册用户管理")
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     @ResponseBody
-    public OperationResult delete(@RequestParam("ids") Long... ids) {
+    public OperationResult delete(@RequestParam("ids") String... ids) {
         Validation.notDemoMode();
         return super.delete(ids, new EntityProcessCallbackHandler<SignupUser>() {
             @Override

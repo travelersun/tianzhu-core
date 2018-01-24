@@ -31,13 +31,13 @@ import com.gdtopway.module.sys.service.DataDictService;
 
 @Controller
 @RequestMapping(value = "/admin/sys/data-dict")
-public class DataDictController extends BaseController<DataDict, Long> {
+public class DataDictController extends BaseController<DataDict, String> {
 
     @Autowired
     private DataDictService dataDictService;
 
     @Override
-    protected BaseService<DataDict, Long> getEntityService() {
+    protected BaseService<DataDict, String> getEntityService() {
         return dataDictService;
     }
 
@@ -93,14 +93,14 @@ public class DataDictController extends BaseController<DataDict, Long> {
 
     @RequiresUser
     @ModelAttribute
-    public void prepareModel(HttpServletRequest request, Model model, @RequestParam(value = "id", required = false) Long id) {
+    public void prepareModel(HttpServletRequest request, Model model, @RequestParam(value = "id", required = false) String id) {
         super.initPrepareModel(request, model, id);
     }
 
     @MetaData(value = "级联子数据集合")
     @RequestMapping(value = "/children", method = RequestMethod.GET)
     @ResponseBody
-    public Map<String, String> children(HttpServletRequest request, @RequestParam(value = "id") Long id) {
+    public Map<String, String> children(HttpServletRequest request, @RequestParam(value = "id") String id) {
         return dataDictService.findMapDataById(id);
     }
 }

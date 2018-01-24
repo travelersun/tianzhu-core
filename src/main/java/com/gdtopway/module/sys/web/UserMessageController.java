@@ -22,19 +22,19 @@ import com.gdtopway.module.sys.service.UserMessageService;
 
 @Controller
 @RequestMapping(value = "/admin/sys/user-message")
-public class UserMessageController extends BaseController<UserMessage, Long> {
+public class UserMessageController extends BaseController<UserMessage, String> {
 
     @Autowired
     private UserMessageService userMessageService;
 
     @Override
-    protected BaseService<UserMessage, Long> getEntityService() {
+    protected BaseService<UserMessage, String> getEntityService() {
         return userMessageService;
     }
 
     @RequiresUser
     @ModelAttribute
-    public void prepareModel(HttpServletRequest request, Model model, @RequestParam(value = "id", required = false) Long id) {
+    public void prepareModel(HttpServletRequest request, Model model, @RequestParam(value = "id", required = false) String id) {
         super.initPrepareModel(request, model, id);
     }
 

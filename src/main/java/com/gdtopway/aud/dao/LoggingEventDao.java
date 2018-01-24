@@ -6,6 +6,6 @@ import com.gdtopway.aud.entity.LoggingEvent;
 import com.gdtopway.core.dao.jpa.BaseDao;
 
 @Repository
-public interface LoggingEventDao extends BaseDao<LoggingEvent, Long> {
+public interface LoggingEventDao extends BaseDao<LoggingEvent, String> {
 
 }

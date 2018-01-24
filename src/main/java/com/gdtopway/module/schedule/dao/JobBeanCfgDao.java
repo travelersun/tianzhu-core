@@ -12,7 +12,7 @@ import com.gdtopway.core.dao.jpa.BaseDao;
 import com.gdtopway.module.schedule.entity.JobBeanCfg;
 
 @Repository
-public interface JobBeanCfgDao extends BaseDao<JobBeanCfg, Long> {
+public interface JobBeanCfgDao extends BaseDao<JobBeanCfg, String> {
 
     @Query("from JobBeanCfg")
     List<JobBeanCfg> findAll();
