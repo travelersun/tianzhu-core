@@ -67,6 +67,17 @@ public class SiteIndexController extends BaseController<SiteUser, String> {
         return "w/index";
     }
 
+
+    @RequestMapping(value = "cert", method = RequestMethod.GET)
+    public String cert(Model model) {
+        return "w/certificate";
+    }
+
+    @RequestMapping(value = "mycert", method = RequestMethod.GET)
+    public String mycert(Model model) {
+        return "w/mycert";
+    }
+
     @RequestMapping(value = "/password/reset", method = RequestMethod.GET)
     public String restPasswordShow(Model model) {
         return "w/password-reset";

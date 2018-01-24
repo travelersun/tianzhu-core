@@ -10,7 +10,7 @@
 	<mapping path="*" exclue="true" />
 	<mapping path="/admin/util/load-balance-test" exclue="true" />
 
-	<mapping path="/w/login" decorator="/WEB-INF/views/layouts/w-login.jsp" />
+	<!--<mapping path="/w/login" decorator="/WEB-INF/views/layouts/w-login.jsp" />-->
 
 
 </sitemesh>
