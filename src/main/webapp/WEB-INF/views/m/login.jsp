@@ -52,8 +52,8 @@
     <div class="tips mt30">
         <span>使用你在有凭证平台注册的手机号和交易密码进行登录 </span>
         <span>
-        忘记密码?
-        <a href="${ctx}/admin/password/forget" data-toggle="modal-ajaxify" title="找回密码" data-modal-size="550px">找回密码</a>
+       <%-- 忘记密码?--%>
+        <%--<a href="${ctx}/admin/password/forget" data-toggle="modal-ajaxify" title="找回密码" data-modal-size="550px">找回密码</a>--%>
         没有账号?<a href="${ctx}/fund" data-toggle="modal-ajaxify" title="自助注册">自助注册</a>
         </span>
     </div>
@@ -62,7 +62,7 @@
 </form>
 
 <div class="footer">
-    <div class="mt10">2016-2018 © 泛舟信息科技.</div>
+    <div class="mt10">2016-2018 © 天竺信息科技.</div>
     <div class="record"><a href="#" target="_blank">粤ICP备15047528号</a></div>
 </div>
 

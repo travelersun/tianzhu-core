@@ -12,6 +12,7 @@ import com.gdtopway.core.security.AuthUserDetails;
 import com.gdtopway.core.service.BaseService;
 import com.gdtopway.core.util.ImageUtils;
 import com.gdtopway.core.web.BaseController;
+import com.gdtopway.core.web.captcha.ImageCaptchaServlet;
 import com.gdtopway.core.web.filter.WebAppContextInitFilter;
 import com.gdtopway.core.web.util.ServletUtils;
 import com.gdtopway.core.web.view.OperationResult;
@@ -24,6 +25,7 @@ import com.gdtopway.module.sys.service.NotifyMessageService;
 import com.gdtopway.module.sys.service.SmsVerifyCodeService;
 import com.gdtopway.module.sys.service.UserMessageService;
 import com.gdtopway.support.service.DynamicConfigService;
+import com.gdtopway.support.service.MailService;
 import com.google.common.collect.Maps;
 import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -62,6 +64,9 @@ public class MIndexController extends BaseController<SiteUser, String> {
     private SiteUserService siteUserService;
 
     @Autowired
+    private MailService mailService;
+
+    @Autowired
     private SmsVerifyCodeService smsVerifyCodeService;
 
     @Autowired
@@ -93,6 +98,35 @@ public class MIndexController extends BaseController<SiteUser, String> {
     public String mycert(Model model) {
         return "m/mycert";
     }
+
+    @RequestMapping(value = "/password/forget", method = RequestMethod.GET)
+    public String forgetPasswordShow(Model model) {
+        model.addAttribute("mailServiceEnabled", mailService.isEnabled());
+        return "m/pub/password-forget";
+    }
+
+    @RequestMapping(value = "/password/forget", method = RequestMethod.POST)
+    @ResponseBody
+    public OperationResult forgetPasswordSave(HttpServletRequest request, @RequestParam("uid") String uid, @RequestParam("captcha") String captcha) {
+        if (!ImageCaptchaServlet.validateResponse(request, captcha)) {
+            return OperationResult.buildFailureResult("验证码不正确，请重新输入");
+        }
+        User user = userService.findByAuthTypeAndAuthUid(AuthTypeEnum.SYS, uid);
+        if (user == null) {
+            user = userService.findByProperty("email", uid);
+        }
+        if (user == null) {
+            return OperationResult.buildFailureResult("未找到匹配账号信息，请联系管理员处理");
+        }
+        String email = user.getEmail();
+        if (StringUtils.isBlank(email)) {
+            return OperationResult.buildFailureResult("当前账号未设定注册邮箱，请联系管理员先设置邮箱后再进行此操作");
+        }
+
+        userService.requestResetPassword(WebAppContextInitFilter.getInitedWebContextFullUrl(), user);
+        return OperationResult.buildSuccessResult("找回密码请求处理成功。重置密码邮件已发送至：" + email);
+    }
+
 
     @RequestMapping(value = "/password/reset", method = RequestMethod.GET)
     public String restPasswordShow(Model model) {

@@ -8,17 +8,5 @@ $(function () {
 
         }
     });
-    /*
-    $("#formSignin").appSubmit({
-
-        onSuccess: function (b) {
-
-            handleAjaxResult(b, function () {
-                location = '/m';
-            })
-
-        }
-    });
-    */
 
 });
