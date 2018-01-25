@@ -76,7 +76,7 @@
                 <!-- BEGIN COPYRIGHT -->
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="copyright pull-right">
+                        <div class="copyright pull-center" style="text-align: center;">
                             <span title="${buildVersion}|<%= request.getLocalAddr()  %>:<%=request.getLocalPort()%>]"
                                 style="display: inline-block;">
                                 2015 &copy;

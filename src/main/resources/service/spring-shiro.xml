@@ -139,11 +139,11 @@
 
 				/w/login = authcWww
 				/w/logout = logoutWww
-				/w* = anon
+				/w* = authcWww
 
 				/m/login = authcMobile
 				/m/logout = logoutMobile
-				/m/** = authcBearerToken,anon
+				/m/** = authcBearerToken,authcMobile
 
 				/admin/login = authcA
 				/admin/logout = logoutAdmin

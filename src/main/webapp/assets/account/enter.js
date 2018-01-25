@@ -1,1 +1,24 @@
-$(function(){var a=$("#Message").val();if(a){alert(a)}$("#formSignin").show().find("#CellPhoneNumber").focus();$("#linkRegister, #linkForgotPassword").on({click:function(){$('#formSignin input[type!="hidden"], #formVerify input[type!="hidden"], #formRegister input[type!="hidden"]').val("");$("#formSignin").hide();$("#formVerify").show().find("#CellPhoneNumber").focus()}});$("#imgCalculateCode").on({click:function(){$.appAjax({url:"/m/home/getcalculatecode",executeBeforeSendFunc:false,onSuccess:function(b){b.result&&$("#imgCalculateCode").attr({src:b.data})&&$("#formVerify #CalculateResult").val("")}})}});$("#linkCaptchaCode").on({click:function(){var d=$(this),c=$("#formVerify #CellPhoneNumber"),f=$("#formVerify #CalculateResult");if(c.valid()&&f.valid()&&!d.data("disabled")&&$("#CaptchaCode").focus()){d.data("disabled",true).addClass("text-muted");$.appAjax({url:"/m/home/sendcaptchacode",data:{cellphonenumber:c.val(),calculateResult:f.val()},onSuccess:function(g){if(!g.result){e=0;g.code==="0013"&&$("#imgCalculateCode").click()}handleAjaxResult(g)}});var e=60;var b=setInterval(function(){if(e>=0){d.html("重新发送("+e--+")")}else{clearInterval(b);d.data("disabled",false).removeClass("text-muted").html("获取验证码")}},1000)}}});$("#linkBack").on({click:function(){$('#formSignin input[type!="hidden"], #formVerify input[type!="hidden"], #formRegister input[type!="hidden"]').val("");$("#formRegister").hide();$("#formVerify").show().find("#CellPhoneNumber").focus()}});$("#cbAgreement").on({change:function(){$("#formRegister button:submit").attr({disabled:!$(this).is(":checked")})}});$("#linkServiceProtocol").on({click:function(){$("#divServiceProtocol").popup()}});$("#formSignin").appSubmit({onSuccess:function(b){handleAjaxResult(b,function(){location.reload()})}});$("#formVerify").appSubmit({onSuccess:function(b){setTimeout(function(){if(b.result){if(b.code==="1"){viewUtility.success("验证成功，现为你自动登录",5000);setTimeout(function(){location.reload()},1000)}else{$("#formRegister #CellPhoneNumber").val($("#formVerify #CellPhoneNumber").val());$("#formVerify").hide();$("#formRegister").show().find("#IdentityNumber").focus()}}else{viewUtility.failure(b.message)}},250)}});$("#formRegister").appSubmit({onBeforeSend:function(){return $("#cbAgreement").is(":checked")},onSuccess:function(b){handleAjaxResult(b,function(){location.href=b.data})}})});
+$(function () {
+
+    $("#formSignin").show().find("#CellPhoneNumber").focus();
+
+    $("#linkRegister, #linkForgotPassword").on({
+        click: function () {
+            $('#formSignin input[type!="hidden"]').val("");
+
+        }
+    });
+    /*
+    $("#formSignin").appSubmit({
+
+        onSuccess: function (b) {
+
+            handleAjaxResult(b, function () {
+                location = '/m';
+            })
+
+        }
+    });
+    */
+
+});

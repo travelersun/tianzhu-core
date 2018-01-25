@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div class="row">
-		<div class="col-md-6">
+		<div class="col-md-12">
 			<!-- BEGIN LOGIN FORM -->
 			<form id="login-form" class="login-form" action="${ctx}/admin/login" method="post">
 				<%--管理端登录标识 --%>
@@ -47,11 +47,14 @@
 					<div align='center' class='alert alert-danger'>${error}</div>
 				</c:if>
 				<div class="form-actions">
-					<label> <input type="checkbox" name="rememberMe" checked="true" value="true" /> 记住我，下次自动登录
-					</label>
-					<button type="submit" class="btn blue pull-right">
+
+					<button type="submit" class="btn blue pull-left">
 						登录 <i class="m-icon-swapright m-icon-white"></i>
 					</button>
+
+					<label class="pull-right"> <input type="checkbox" name="rememberMe" checked="true" value="true" /> 记住我，下次自动登录
+					</label>
+
 				</div>
 				<div class="forget-password">
 					<div class="row">
@@ -63,7 +66,7 @@
 							</c:if>
 						</div>
 						<div class="col-md-9">
-							<p class="pull-right">
+							<p class="pull-center">
 								忘记密码? <a href="${ctx}/admin/password/forget" data-toggle="modal-ajaxify" title="找回密码" data-modal-size="550px">找回密码</a>
 								<c:if test="${mgmtSignupEnabled}">
                                 &nbsp; &nbsp;&nbsp; &nbsp; 没有账号? <a href="${ctx}/admin/signup"
@@ -76,7 +79,8 @@
 			</form>
 			<!-- END LOGIN FORM -->
 		</div>
-		<div class="col-md-1"></div>
+
+		<%--<div class="col-md-1"></div>
 		<div class="col-md-5">
 			<div class="form-info" style="height: 270px; margin-top: 50px">
 				<h4>访问提示</h4>
@@ -106,7 +110,7 @@
                     </script>
 				</c:if>
 			</div>
-		</div>
+		</div>--%>
 	</div>
 
 	<script src="${ctx}/assets/admin/app/login.js"></script>
