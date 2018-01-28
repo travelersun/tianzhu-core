@@ -60,7 +60,7 @@ public class SourceCodeBuilder {
         ClassPathScanningCandidateComponentProvider scanner = new ClassPathScanningCandidateComponentProvider(false);
         scanner.addIncludeFilter(new AnnotationTypeFilter(Entity.class));
         scanner.addExcludeFilter(new AnnotationTypeFilter(RevisionEntity.class));
-        Set<BeanDefinition> beanDefinitions = scanner.findCandidateComponents("");
+        Set<BeanDefinition> beanDefinitions = scanner.findCandidateComponents("com.gdtopway.biz.fund.entity");
         for (BeanDefinition beanDefinition : beanDefinitions) {
             debug(" - " + beanDefinition.getBeanClassName());
             entityNames.add(beanDefinition.getBeanClassName());

@@ -1,5 +1,8 @@
 package com.gdtopway.biz.fund.web;
 
+import com.gdtopway.biz.fund.entity.FundCustomer;
+import com.gdtopway.biz.fund.entity.FundCustomerOrder;
+import com.gdtopway.biz.fund.service.FundCustomerService;
 import com.gdtopway.biz.shop.entity.SiteUser;
 import com.gdtopway.biz.shop.service.SiteUserService;
 import com.gdtopway.core.annotation.MenuData;
@@ -61,6 +64,9 @@ public class MIndexController extends BaseController<SiteUser, String> {
     private UserService userService;
 
     @Autowired
+    FundCustomerService fundCustomerService;
+
+    @Autowired
     private SiteUserService siteUserService;
 
     @Autowired
@@ -85,13 +91,50 @@ public class MIndexController extends BaseController<SiteUser, String> {
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String wwwIndex(Model model) {
+
+        User user =  AuthContextHolder.findAuthUser();
+
+        FundCustomer customer = fundCustomerService.findByProperty("phone",user.getAuthUid());
+
+        model.addAttribute("customer",customer);
+
         return "m/index";
     }
 
 
     @RequestMapping(value = "cert", method = RequestMethod.GET)
     public String cert(Model model) {
+
+        User user =  AuthContextHolder.findAuthUser();
+
+        model.addAttribute("user",user);
+
         return "m/certificate";
+    }
+
+    @RequestMapping(value = "certdetail", method = RequestMethod.GET)
+    public String certdetail(Model model) {
+
+        User user =  AuthContextHolder.findAuthUser();
+
+        model.addAttribute("user",user);
+
+        return "m/cert-detail";
+    }
+
+    @RequestMapping(value = "cert", method = RequestMethod.POST)
+    @ResponseBody
+    public OperationResult certp(FundCustomerOrder order) {
+
+        User user =  AuthContextHolder.findAuthUser();
+
+        OperationResult result = fundCustomerService.createCustomerOrder(order,user);
+
+        if(result.getCode().equals(OperationResult.SUCCESS)){
+            return OperationResult.buildSuccessResult("创建成功");
+        }else{
+            return OperationResult.buildFailureResult("创建失败");
+        }
     }
 
     @RequestMapping(value = "mycert", method = RequestMethod.GET)
@@ -248,10 +291,10 @@ public class MIndexController extends BaseController<SiteUser, String> {
 
     @RequestMapping(value = "/file/upload/single", method = RequestMethod.POST)
     @ResponseBody
-    public OperationResult singleFileUpload(HttpServletRequest request, @RequestParam("fileUpload") CommonsMultipartFile fileUpload) {
+    public OperationResult singleFileUpload(HttpServletRequest request, @RequestParam("fileData") CommonsMultipartFile fileUpload) {
         try {
             if (fileUpload != null && !fileUpload.isEmpty()) {
-                String path = ServletUtils.writeUploadFile(fileUpload.getInputStream(), fileUpload.getOriginalFilename(), fileUpload.getSize());
+                String path = ServletUtils.writeUploadFileM(fileUpload.getInputStream(), fileUpload.getOriginalFilename(), fileUpload.getSize());
                 if (StringUtils.isNotBlank(path)) {
                     return OperationResult.buildSuccessResult("文件提交成功", path);
                 }

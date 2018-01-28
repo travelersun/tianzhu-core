@@ -196,8 +196,8 @@ margin-right: 3px;
 <div class="weui-cell__bd">
 <div class="weui-uploader__bd">
 <div class="weui-uploader__input-box">
-<img class="weui-uploader__file" src="#">
-<input id="FrontOfIDCard" name="FrontOfIDCard" type="hidden" value="" placeholder="请上传身份证正面照">
+<img class="weui-uploader__file" src="${cpicture.forntcertpict}">
+<input id="FrontOfIDCard" name="forntcertpict" type="hidden" value="${cpicture.forntcertpict}" placeholder="请上传身份证正面照" data-val="true" data-val-required="请上传身份证正面照">
 <input class="weui-uploader__input uploadFile" id="UploaderFrontOfIDCard" accept="image/*" type="file">
 </div>
 </div>
@@ -217,8 +217,8 @@ margin-right: 3px;
 <div class="weui-cell__bd">
 <div class="weui-uploader__bd">
 <div class="weui-uploader__input-box">
-<img class="weui-uploader__file" src="#">
-<input id="BackOfIDCard" name="BackOfIDCard" type="hidden" value="" placeholder="请上传身份证背面照">
+<img class="weui-uploader__file" src="${cpicture.rearcertpict}">
+<input id="BackOfIDCard" name="rearcertpict" type="hidden" value="${cpicture.rearcertpict}" placeholder="请上传身份证背面照" data-val="true" data-val-required="请上传身份证背面照">
 <input class="weui-uploader__input uploadFile" id="UploaderBackOfIDCard" accept="image/*" type="file">
 </div>
 </div>
@@ -238,8 +238,8 @@ margin-right: 3px;
 <div class="weui-cell__bd">
 <div class="weui-uploader__bd">
 <div class="weui-uploader__input-box">
-<img class="weui-uploader__file" src="#">
-<input id="IDCardInHand" name="IDCardInHand" type="hidden" value="" placeholder="请上传手持身份证照">
+<img class="weui-uploader__file" src="${cpicture.handpict}">
+<input id="IDCardInHand" name="handpict" type="hidden" value="${cpicture.handpict}" placeholder="请上传手持身份证照" data-val="true" data-val-required="请上传手持身份证照">
 <input class="weui-uploader__input" id="UploaderIDCardInHand" accept="image/*" type="file">
 </div>
 </div>

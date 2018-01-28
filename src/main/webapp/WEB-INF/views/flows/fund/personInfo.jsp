@@ -72,7 +72,7 @@ margin-right: 3px;
 <label class="weui-label require" for="CellPhoneNumber">手机号码</label>
 </div>
 <div class="weui-cell__bd">
-<input class="weui-input" id="CellPhoneNumber" name="phone" readonly="true" type="number" value="${customer.phone}" placeholder="请输入手机号码" data-val="true" data-val-required="请输入手机号码">
+<input class="weui-input" id="CellPhoneNumber" name="phone"  type="number" value="${customer.phone}" placeholder="请输入手机号码" data-val="true" data-val-required="请输入手机号码" data-val="true" data-val-regex="手机号 格式错误" data-val-regex-pattern="^((\+?\d{2} )?[1-9]\d{10}(-\d{1,4})?)?$" >
 </div>
 <div class="weui-cell__ft">
 <i class="weui-icon-warn"></i>
@@ -91,10 +91,10 @@ margin-right: 3px;
 </div>
 <div class="weui-cell">
 <div class="weui-cell__hd">
-<label class="weui-label" for="Password">密码</label>
+<label class="weui-label require" for="Password">密码</label>
 </div>
 <div class="weui-cell__bd">
-<input class="weui-input" id="Password" name="password" type="text" value="${customer.password}" placeholder="请输账户密码">
+<input class="weui-input" id="Password" name="password" type="text" value="${customer.password}" placeholder="请输账户密码" data-val="true" data-val-required="请输账户密码">
 </div>
 <div class="weui-cell__ft">
 <i class="weui-icon-warn"></i>
@@ -102,10 +102,10 @@ margin-right: 3px;
 </div>
 <div class="weui-cell">
 <div class="weui-cell__hd">
-<label class="weui-label" for="WeiXinNo">微信号</label>
+<label class="weui-label require" for="WeiXinNo">微信号</label>
 </div>
 <div class="weui-cell__bd">
-<input class="weui-input" id="WeiXinNo" name="weixin" type="text" value="${customer.weixin}" placeholder="请输入微信号">
+<input class="weui-input" id="WeiXinNo" name="weixin" type="text" value="${customer.weixin}" placeholder="请输入微信号" data-val="true" data-val-required="请输入微信号">
 </div>
 <div class="weui-cell__ft">
 <i class="weui-icon-warn"></i>
@@ -116,10 +116,10 @@ margin-right: 3px;
 <input data-val="true" data-val-number="字段 省份Id 必须是一个数字。" id="ProvinceId" name="ProvinceId" type="hidden" value="">
 <input data-val="true" data-val-number="字段 城市Id 必须是一个数字。" id="CityId" name="CityId" type="hidden" value="">
 <input data-val="true" data-val-number="字段 地区Id 必须是一个数字。" id="DistrictId" name="DistrictId" type="hidden" value="">
-<label class="weui-label" for="Area">所在地区</label>
+<label class="weui-label require" for="Area">所在地区</label>
 </div>
 <div class="weui-cell__bd">
-<input class="weui-select" id="Area" name="region" type="text" value="${customer.region}" placeholder="请选择所在地区" readonly="">
+<input class="weui-select" id="Area" name="region" type="text" value="${customer.region}" placeholder="请选择所在地区" readonly="" data-val="true" data-val-required="请选择所在地区">
 </div>
 <div class="weui-cell__ft">
 <i class="weui-icon-warn"></i>
@@ -127,10 +127,10 @@ margin-right: 3px;
 </div>
 <div class="weui-cell">
 <div class="weui-cell__hd">
-<label class="weui-label" for="Address">详细地址</label>
+<label class="weui-label require" for="Address">详细地址</label>
 </div>
 <div class="weui-cell__bd">
-<input class="weui-input" id="Address" name="address" type="text" value="${customer.address}" placeholder="请输入详细地址">
+<input class="weui-input" id="Address" name="address" type="text" value="${customer.address}" placeholder="请输入详细地址" data-val="true" data-val-required="请输入详细地址">
 </div>
 <div class="weui-cell__ft">
 <i class="weui-icon-warn"></i>

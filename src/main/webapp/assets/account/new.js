@@ -1,16 +1,5 @@
 $(function () {
     var f = $("#DebtorName").val();
-    var e = $("#DebtorMail").val();
-    if (!e) {
-
-        confirm("请先到个人中心添加邮箱地址，完善个人信息", function (g) {
-            //location.href = g ? "/m/customer/info" : "/"
-        }
-
-
-        )
-
-    }
     var a = function () {
         var h = $("#BorrowingDate").val(), g = $("#RepaymentDate").val();
         var i = (parseDatetime(g) - parseDatetime(h)) / daysTime;
@@ -37,39 +26,10 @@ $(function () {
             $("#spanInterest").html(g + "元")
         }
     };
-    var d = function (g) {
-        loadUrl("电子签名", "/m/customer/signature", function (h) {
-            signature.init(function () {
-                if (h.find("#formCustomerSignature #hIsValidPassword").val() === "TRUE") {
-                    $("#hIsValidPassword").val(h.find("#formCustomerSignature #hIsValidPassword").val());
-                    var i = h.find("#formCustomerSignature #hSignatureImageUrl").val();
-                    $("#DebtorSignatureImageUrl").val(i).valid();
-                    $("#imgDebtorSignatureImage").attr({src: i}).show();
-                    $("#linkSignature").html(i ? "重新签署" : "初次签署");
-                    g && g()
-                }
-            })
-        })
-    };
     var b = function () {
-        if ($("#hIsValidPassword").val() === "TRUE") {
-            $("#formNew").submit()
-        } else {
-            loadUrl("输入交易密码", "/m/customer/checkpassword/" + encodeParameters(CheckPasswordTpisType.CreateIOU), function (g) {
-                checkPassword.init(function () {
-                    if (g.find("#formCheckPassword #hIsValidPassword").val() === "TRUE") {
-                        $("#hIsValidPassword").val(g.find("#formCheckPassword #hIsValidPassword").val());
-                        $("#formNew").submit()
-                    }
-                })
-            })
-        }
+            $("#formNew").submit();
     };
-    $("#linkSignature").on({
-        click: function () {
-            d()
-        }
-    });
+
     $("#CreditorName").on({
         change: function () {
             if ($(this).val() === f) {
@@ -115,11 +75,7 @@ $(function () {
         click: function () {
             if ($("#cbAgreement").is(":checked")) {
                 if ($("#formNew").valid()) {
-                    if ($("#DebtorSignatureImageUrl").val()) {
-                        b()
-                    } else {
-                        d(b)
-                    }
+                    b();
                 }
             } else {
                 alert("请先阅读并同意《借款协议》")
@@ -133,9 +89,17 @@ $(function () {
                 return false
             }
         }, onSuccess: function (g) {
-            handleAjaxResult(g, function () {
-                location.href = g.data
-            })
+            //handleAjaxResult(g, function () {
+               // location.href = g.data
+            //})
+            console.log(g);
+            if(g.type == "success"){
+
+                location.href = "/m";
+            }else{
+                location.href = "/m/cert";
+            }
+
         }
     })
 });

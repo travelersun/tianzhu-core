@@ -134,7 +134,7 @@ margin-right: 3px;
 <label class="weui-label" for="CompanyName">名称</label>
 </div>
 <div class="weui-cell__bd">
-<input class="weui-input" id="CompanyName" name="CompanyName" type="text" value="" placeholder="请输入公司名称">
+<input class="weui-input" id="CompanyName" name="company" type="text" value="${caddinfo.company}" placeholder="请输入公司名称" data-val="true" data-val-required="请输入公司名称">
 </div>
 <div class="weui-cell__ft">
 <i class="weui-icon-warn"></i>
@@ -145,7 +145,7 @@ margin-right: 3px;
 <label class="weui-label" for="CompanyAddress">地址</label>
 </div>
 <div class="weui-cell__bd">
-<input class="weui-input" id="CompanyAddress" name="CompanyAddress" type="text" value="" placeholder="请输入公司地址">
+<input class="weui-input" id="CompanyAddress" name="compnyaddr" type="text" value="${caddinfo.compnyaddr}" placeholder="请输入公司地址" data-val="true" data-val-required="请输入公司地址">
 </div>
 <div class="weui-cell__ft">
 <i class="weui-icon-warn"></i>
@@ -156,7 +156,7 @@ margin-right: 3px;
 <label class="weui-label" for="CompanyPhoneNumber">电话号码</label>
 </div>
 <div class="weui-cell__bd">
-<input class="weui-input" id="CompanyPhoneNumber" name="CompanyPhoneNumber" type="text" value="" placeholder="请输入公司电话号码">
+<input class="weui-input" id="CompanyPhoneNumber" name="companyphone" type="text" value="${caddinfo.companyphone}" placeholder="请输入公司电话号码" data-val="true" data-val-required="请输入公司电话号码">
 </div>
 <div class="weui-cell__ft">
 <i class="weui-icon-warn"></i>
@@ -170,7 +170,7 @@ margin-right: 3px;
 <label class="weui-label" for="MonthlyIncome">月收入(元)</label>
 </div>
 <div class="weui-cell__bd">
-<input class="weui-input" data-val="true" data-val-number="字段 月收入(元) 必须是一个数字。" data-val-range="请输入 0~1.79769313486232E+308" data-val-range-max="1.79769313486232E+308" data-val-range-min="0" id="MonthlyIncome" name="MonthlyIncome" type="number" value="" placeholder="请输入月收入">
+<input class="weui-input" data-val="true" data-val-number="字段 月收入(元) 必须是一个数字。" data-val-range="请输入 0~1.79769313486232E+308" data-val-range-max="1.79769313486232E+308" data-val-range-min="0" id="MonthlyIncome" name="mincome" type="number" value="${caddinfo.mincome}" placeholder="请输入月收入" data-val="true" data-val-required="请输入月收入">
 </div>
 <div class="weui-cell__ft">
 <i class="weui-icon-warn"></i>

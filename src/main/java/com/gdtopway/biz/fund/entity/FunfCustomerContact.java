@@ -2,6 +2,7 @@ package com.gdtopway.biz.fund.entity;
 
 
 import com.gdtopway.core.annotation.MetaData;
+import com.gdtopway.core.entity.BaseEntity;
 import com.gdtopway.core.entity.BaseNativeEntity;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,9 +20,15 @@ import javax.persistence.*;
 @Table(name = "fund_Customer_Contact")
 @MetaData(value = "客户联系人信息表")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class FunfCustomerContact extends BaseNativeEntity {
+public class FunfCustomerContact extends BaseEntity<String> {
 
     private static final long serialVersionUID = 8283298365373612832L;
+
+    @MetaData(value = "共享主键", comments = "对应主对像ID")
+    @Id
+    @Column(nullable = false, unique = true)
+    //@JsonSerialize(using = IdSerialize.class)
+    private String id;
 
     @MetaData(value = "父亲姓名")
     @Column(length = 100,nullable = false)

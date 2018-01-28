@@ -270,7 +270,7 @@ display: block;
 <label class="weui-label" for="FathersName">父亲姓名</label>
 </div>
 <div class="weui-cell__bd">
-<input class="weui-input" id="FathersName" name="FathersName" placeholder="请输入父亲姓名" type="text" value="">
+<input class="weui-input" id="FathersName" name="fathername"  type="text" value="${cocntact.fathername}" data-val="true" data-val-required="请输入父亲姓名">
 </div>
 <div class="weui-cell__ft">
 <i class="weui-icon-warn"></i>
@@ -281,7 +281,7 @@ display: block;
 <label class="weui-label" for="FathersPhoneNumber">父亲电话号码</label>
 </div>
 <div class="weui-cell__bd">
-<input class="weui-input" id="FathersPhoneNumber" name="FathersPhoneNumber" placeholder="请输入父亲电话号码" type="text" value="">
+<input class="weui-input" id="FathersPhoneNumber" name="fatherphone" placeholder="请输入父亲电话号码"  data-val-regex="手机号 格式错误" data-val-regex-pattern="^((\+?\d{2} )?[1-9]\d{10}(-\d{1,4})?)?$" placeholder="请输入父亲姓名" type="number" value="${cocntact.fatherphone}" data-val="true" data-val-required="请输入父亲电话号码">
 </div>
 <div class="weui-cell__ft">
 <i class="weui-icon-warn"></i>
@@ -295,7 +295,7 @@ display: block;
 <label class="weui-label" for="MothersName">母亲姓名</label>
 </div>
 <div class="weui-cell__bd">
-<input class="weui-input" id="MothersName" name="MothersName" placeholder="请输入母亲姓名" type="text" value="">
+<input class="weui-input" id="MothersName" name="mothername" placeholder="请输入母亲姓名" type="text" value="${cocntact.mothername}" data-val="true" data-val-required="请输入母亲姓名">
 </div>
 <div class="weui-cell__ft">
 <i class="weui-icon-warn"></i>
@@ -306,7 +306,7 @@ display: block;
 <label class="weui-label" for="MothersPhoneNumber">母亲电话号码</label>
 </div>
 <div class="weui-cell__bd">
-<input class="weui-input" id="MothersPhoneNumber" name="MothersPhoneNumber" placeholder="请输入母亲电话号码" type="text" value="">
+<input class="weui-input" id="MothersPhoneNumber" name="motherphone"  data-val-regex="手机号 格式错误" data-val-regex-pattern="^((\+?\d{2} )?[1-9]\d{10}(-\d{1,4})?)?$" placeholder="请输入母亲电话号码" type="number" value="${cocntact.motherphone}" data-val="true" data-val-required="请输入母亲电话号码">
 </div>
 <div class="weui-cell__ft">
 <i class="weui-icon-warn"></i>
@@ -320,7 +320,7 @@ display: block;
 <label class="weui-label" for="ColleagueName">同事姓名</label>
 </div>
 <div class="weui-cell__bd">
-<input class="weui-input" id="ColleagueName" name="ColleagueName" placeholder="请输入同事姓名" type="text" value="">
+<input class="weui-input" id="ColleagueName" name="friendname"   placeholder="请输入同事姓名" type="text" value="${cocntact.friendname}" data-val="true" data-val-required="请输入同事姓名">
 </div>
 <div class="weui-cell__ft">
 <i class="weui-icon-warn"></i>
@@ -331,7 +331,7 @@ display: block;
 <label class="weui-label" for="ColleaguePhoneNumber">同事电话号码</label>
 </div>
 <div class="weui-cell__bd">
-<input class="weui-input" id="ColleaguePhoneNumber" name="ColleaguePhoneNumber" placeholder="请输入同事电话号码" type="text" value="">
+<input class="weui-input" id="ColleaguePhoneNumber" name="friendphone" placeholder="请输入同事电话号码" type="number" data-val-regex="手机号 格式错误" data-val-regex-pattern="^((\+?\d{2} )?[1-9]\d{10}(-\d{1,4})?)?$"  value="${cocntact.friendphone}" data-val="true" data-val-required="请输入同事电话号码">
 </div>
 <div class="weui-cell__ft">
 <i class="weui-icon-warn"></i>
@@ -345,7 +345,7 @@ display: block;
 <label class="weui-label" for="SpousesName">配偶姓名</label>
 </div>
 <div class="weui-cell__bd">
-<input class="weui-input" id="SpousesName" name="SpousesName" placeholder="请输入配偶姓名" type="text" value="">
+<input class="weui-input" id="SpousesName" name="matename" placeholder="请输入配偶姓名" type="text" value="${cocntact.matename}" data-val="true" data-val-required="请输入配偶姓名">
 </div>
 <div class="weui-cell__ft">
 <i class="weui-icon-warn"></i>
@@ -356,7 +356,7 @@ display: block;
 <label class="weui-label" for="SpousesPhoneNumber">配偶电话号码</label>
 </div>
 <div class="weui-cell__bd">
-<input class="weui-input" id="SpousesPhoneNumber" name="SpousesPhoneNumber" placeholder="请输入配偶电话号码" type="text" value="">
+<input class="weui-input" id="SpousesPhoneNumber" name="matephone" placeholder="请输入配偶电话号码" data-val-regex="手机号 格式错误" data-val-regex-pattern="^((\+?\d{2} )?[1-9]\d{10}(-\d{1,4})?)?$" type="number" value="${cocntact.matephone}" data-val="true" data-val-required="请输入配偶电话号码">
 </div>
 <div class="weui-cell__ft">
 <i class="weui-icon-warn"></i>

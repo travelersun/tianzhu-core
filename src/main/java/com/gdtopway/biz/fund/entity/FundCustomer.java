@@ -1,5 +1,6 @@
 package com.gdtopway.biz.fund.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.gdtopway.core.annotation.MetaData;
 import com.gdtopway.core.entity.BaseNativeEntity;
 import com.gdtopway.module.auth.entity.User;
@@ -75,6 +76,7 @@ public class FundCustomer extends BaseNativeEntity {
 
     @MetaData(value = "客户借款凭证")
     @OneToMany(mappedBy = "fundCustomer", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     List<FundCustomerOrder> fundCustomerOrders;
 
 

@@ -141,6 +141,7 @@
 				/w/logout = logoutWww
 				/w* = authcWww
 
+				/m//file/upload/single = anon
 				/m/login = authcMobile
 				/m/logout = logoutMobile
 				/m/** = authcBearerToken,authcMobile

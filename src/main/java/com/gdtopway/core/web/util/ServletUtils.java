@@ -474,6 +474,63 @@ public class ServletUtils {
 
     }
 
+    /**
+     * 获取文件上传根目录：优先取write_upload_file_dir参数值，如果没有定义则取webapp/upload
+     * @return 返回图片访问相对路径
+     */
+    public static String writeUploadFileM(InputStream fis, String name, long length) {
+        if (staticFileUploadDir == null) {
+            DynamicConfigService dynamicConfigService = SpringContextHolder.getBean(DynamicConfigService.class);
+            staticFileUploadDir = dynamicConfigService.getString("write_upload_file_dir");
+            if (StringUtils.isBlank(staticFileUploadDir)) {
+                staticFileUploadDir = WebAppContextInitFilter.getInitedWebContextRealPath();
+            }
+            if (staticFileUploadDir.endsWith(File.separator)) {
+                staticFileUploadDir = staticFileUploadDir.substring(0, staticFileUploadDir.length() - 1);
+            }
+            logger.info("Setup file upload root dir:  {}", staticFileUploadDir);
+        }
+
+        //简便的做法用UUID作为主键，每次上传都会创建文件对象和数据记录，便于管理，但是存在相同文件重复保存情况
+        String id = UidUtils.UID();
+
+        //加上年月日分组处理，一方面便于直观看出上传文件日期信息以便批量处理，另一方面合理分组控制目录的个数和层级避免单一目录下文件过多
+        DateTime now = new DateTime();
+        StringBuilder sb = new StringBuilder();
+        int year = now.getYear();
+        sb.append("/" + year);
+        String month = "";
+        int monthOfYear = now.getMonthOfYear();
+        if (monthOfYear < 10) {
+            month = "0" + monthOfYear;
+        } else {
+            month = "" + monthOfYear;
+        }
+        String day = "";
+        int dayOfMonth = now.getDayOfMonth();
+        if (dayOfMonth < 10) {
+            day = "0" + dayOfMonth;
+        } else {
+            day = "" + dayOfMonth;
+        }
+        sb.append("/" + month);
+        sb.append("/" + day);
+        Assert.notNull(id, "id is required to buildInstance");
+        //sb.append("/" + id);
+
+        String path = "/upload/" + sb + "/" + id;
+        String fullPath = staticFileUploadDir + path;
+        logger.debug("Saving upload file: {}", fullPath);
+        try {
+            FileUtils.copyInputStreamToFile(fis, new File(fullPath));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        return path;
+
+    }
+
     public static boolean isMobileAndroidClient(HttpServletRequest request) {
         String android = request.getParameter("_android_");
         if (BooleanUtils.toBoolean(android)) {

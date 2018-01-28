@@ -25,6 +25,7 @@
 
     <view-state id="additionInfo" view="flows/fund/additionInfo" model="caddinfo">
         <transition on="submit" to="accountInfo">
+            <evaluate expression="caddinfo.mincome" result="customer.mincome"></evaluate>
         </transition>
         <transition on="preStep" to="personInfo">
         </transition>
@@ -44,12 +45,24 @@
         </transition>
     </view-state>
 
-    <view-state id="viewOrder" view="flows/fund/viewOrder" model="customer">
-        <transition on="returnToIndex" to="returnToIndex">
+    <view-state id="viewOrder" view="flows/fund/viewOrder" >
+        <attribute name="customer" value="customer"></attribute>
+        <attribute name="caddinfo" value="caddinfo"></attribute>
+        <attribute name="cpicture" value="cpicture"></attribute>
+        <attribute name="cocntact" value="cocntact"></attribute>
+        <transition on="confirmed" to="processCustcomer">
         </transition>
         <transition on="preStep" to="verify">
         </transition>
     </view-state>
+
+    <action-state id="processCustcomer">
+        <evaluate expression="fundCustomerService.createCustomer(customer,caddinfo,cpicture,cocntact)" />
+        <transition to="returnToIndex" />
+    </action-state>
+
     <end-state id="returnToIndex" view="externalRedirect:/index.jsp">
     </end-state>
+
+
 </flow>
