@@ -45,25 +45,25 @@
 		        }, {
 		            label : '登录账号',
 		            name : 'user.authUid',
-		            width : 200,
+		            width : 70,
 		            align : 'center',
 		            editable: false
 		        }, {
 		            label : '姓名',
 		            name : 'name',
-		            width : 34,
+		            width : 70,
 		            align : 'center',
 		            editable: true                                                                   
 		        }, {
 		            label : '手机号',
 		            name : 'phone',
-		            width : 34,
+		            width : 70,
 		            align : 'center',
 		            editable: true                                                                   
 		        }, {
 		            label : '身份证号',
 		            name : 'certid',
-		            width : 34,
+		            width : 130,
 		            align : 'center',
 		            editable: true                                                                   
 		        }, {
@@ -75,13 +75,15 @@
 		        }, {
 		            label : '地区',
 		            name : 'region',
-		            width : 200,
+		            width : 150,
 		            align : 'center',
 		            editable: true                                                                   
 		        }, {
 		            label : '月收入',
 		            name : 'mincome',
-		            editable: true                                                                   
+                    align : 'center',
+                    formatter: 'currency',
+					editable: true
 		        }],
 		        postData: {
 		           "search['FETCH_user']" : "LEFT"

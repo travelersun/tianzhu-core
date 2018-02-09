@@ -11,9 +11,12 @@ import com.gdtopway.module.auth.entity.UserR2Role;
 import com.gdtopway.module.auth.service.RoleService;
 import com.gdtopway.module.auth.service.UserService;
 import com.google.common.collect.Lists;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @Transactional
@@ -84,6 +87,45 @@ public class FundCustomerService extends BaseService<FundCustomer,String> {
 
     }
 
+    @Override
+    protected void preInsert(FundCustomer entity) {
+
+        FundCustomerAddInfo addInfo = fundCustomerAddInfoDao.findOne(entity.getId());
+        FundCustomerPicture picture = fundCustomerPictureDao.findOne(entity.getId());
+        FunfCustomerContact contact = funfCustomerContactDao.findOne(entity.getId());
+        User user =userService.findByAuthUid(entity.getPhone());
+
+        BeanUtils.copyProperties(addInfo,entity.getFundCustomerAddInfo(),"");
+        BeanUtils.copyProperties(addInfo,entity.getFundCustomerAddInfo(),"");
+        BeanUtils.copyProperties(addInfo,entity.getFundCustomerAddInfo(),"");
+
+        entity.setFundCustomerAddInfo(addInfo);
+        entity.setFundCustomerPicture(picture);
+        entity.setFunfCustomerContact(contact);
+        entity.setUser(user);
+        super.preInsert(entity);
+    }
+
+    @Override
+    protected void preUpdate(FundCustomer entity) {
+
+        FundCustomerAddInfo addInfo = fundCustomerAddInfoDao.findOne(entity.getId());
+        FundCustomerPicture picture = fundCustomerPictureDao.findOne(entity.getId());
+        FunfCustomerContact contact = funfCustomerContactDao.findOne(entity.getId());
+        User user =userService.findByAuthUid(entity.getPhone());
+
+        BeanUtils.copyProperties(addInfo,entity.getFundCustomerAddInfo(),"id");
+        BeanUtils.copyProperties(addInfo,entity.getFundCustomerAddInfo(),"id");
+        BeanUtils.copyProperties(addInfo,entity.getFundCustomerAddInfo(),"id");
+
+        entity.setFundCustomerAddInfo(addInfo);
+        entity.setFundCustomerPicture(picture);
+        entity.setFunfCustomerContact(contact);
+        entity.setUser(user);
+
+        super.preUpdate(entity);
+    }
+
     public OperationResult createCustomerOrder(FundCustomerOrder order, User user) {
 
         FundCustomer fundCustomer = this.findByProperty("phone",user.getAuthUid());
@@ -103,4 +145,13 @@ public class FundCustomerService extends BaseService<FundCustomer,String> {
         }
 
     }
+
+    public List<FundCustomerOrder> findOrderByCustomerAndStatus(FundCustomer fundCustomer,String status){
+
+        List<FundCustomerOrder> result = fundCustomerOrderDao.findOrderByCustomerId(fundCustomer.getId(),status);
+
+        return result;
+
+    }
+
 }

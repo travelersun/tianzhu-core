@@ -1,6 +1,8 @@
 package com.gdtopway.biz.fund.service;
 
 
+import com.gdtopway.biz.fund.dao.FundCustomerDao;
+import com.gdtopway.biz.fund.entity.FundCustomer;
 import com.gdtopway.biz.fund.entity.FundCustomerOrder;
 import com.gdtopway.biz.fund.dao.FundCustomerOrderDao;
 
@@ -17,8 +19,33 @@ public class FundCustomerOrderService extends BaseService<FundCustomerOrder,Stri
     @Autowired
     private FundCustomerOrderDao fundCustomerOrderDao;
 
+    @Autowired
+    private FundCustomerService fundCustomerService;
+
     @Override
     protected BaseDao<FundCustomerOrder, String> getEntityDao() {
         return fundCustomerOrderDao;
+    }
+
+
+
+    @Override
+    protected void preInsert(FundCustomerOrder entity) {
+
+        FundCustomer c = fundCustomerService.findByProperty("phone",entity.getFundCustomer().getPhone());
+
+        entity.setFundCustomer(c);
+
+        super.preInsert(entity);
+    }
+
+    @Override
+    protected void preUpdate(FundCustomerOrder entity) {
+
+        FundCustomer c = fundCustomerService.findByProperty("phone",entity.getFundCustomer().getPhone());
+
+        entity.setFundCustomer(c);
+
+        super.preUpdate(entity);
     }
 }

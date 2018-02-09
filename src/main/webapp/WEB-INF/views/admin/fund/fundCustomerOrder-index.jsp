@@ -43,12 +43,18 @@
 		            name : 'id',
 		            hidden : true                          
 		        }, {
-		            label : '客户信息对象',
-		            name : 'fundCustomer',
-		            width : 200,
+		            label : '客户姓名',
+		            name : 'fundCustomer.name',
+		            width : 100,
 		            align : 'center',
 		            editable: true                                                                   
-		        }, {
+		        },{
+                    label : '客户手机号',
+                    name : 'fundCustomer.phone',
+                    width : 150,
+                    align : 'center',
+                    editable: true
+                }, {
 		            label : '出借人名称',
 		            name : 'lendername',
 		            width : 100,
@@ -57,37 +63,52 @@
 		        }, {
 		            label : '借款日期',
 		            name : 'putoutdate',
+                    formatter: 'date',
 		            width : 150,
 		            align : 'center',
 		            editable: true                                                                   
 		        }, {
 		            label : '还款日期',
 		            name : 'maturity',
+                    formatter: 'date',
 		            width : 150,
 		            align : 'center',
 		            editable: true                                                                   
 		        }, {
 		            label : '借款金额',
 		            name : 'loanmoney',
+                    formatter: 'currency',
+                    align : 'center',
+                    width : 100,
 		            editable: true                                                                   
 		        }, {
-		            label : '年化利率',
+		            label : '年化利率(%)',
 		            name : 'yrate',
-		            editable: true                                                                   
-		        }, {
-		            label : '备注',
-		            name : 'remark',
-		            width : 200,
-		            align : 'center',
+                    align : 'center',
+                    formatter: 'number',
+                    width : 100,
 		            editable: true                                                                   
 		        }, {
 		            label : '服务费',
 		            name : 'servicemonry',
+                    align : 'center',
+                    formatter: 'currency',
+                    width : 100,
 		            editable: true                                                                   
-		        }, {
+		        },{
+                    label : '备注',
+                    name : 'remark',
+                    width : 100,
+                    align : 'center',
+                    editable: true
+                },  {
 		            label : '状态',
 		            name : 'status',
 		            width : 100,
+                    formatter : 'select',
+                    searchoptions : {
+                        valueJsonString : '<tags:json value="${orderStatus}"/>'
+                    },
 		            align : 'center',
 		            editable: true                                                                   
 		        } ],
@@ -100,6 +121,7 @@
 		        fullediturl : WEB_ROOT + '/admin/fund/fund-customer-order/edit-tabs'
 		    });
 		});
+
     </script>
 </body>
 </html>

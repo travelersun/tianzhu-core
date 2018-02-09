@@ -75,8 +75,9 @@ public class FundCustomer extends BaseNativeEntity {
 
 
     @MetaData(value = "客户借款凭证")
-    @OneToMany(mappedBy = "fundCustomer", cascade = CascadeType.ALL, orphanRemoval = true)
+    //@OneToMany(mappedBy = "fundCustomer", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
+    @Transient
     List<FundCustomerOrder> fundCustomerOrders;
 
 

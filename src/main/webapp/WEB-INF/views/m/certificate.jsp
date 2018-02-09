@@ -34,16 +34,16 @@
             <div class="weui-cell">
                 <div class="weui-cell__hd weui-label"><label for="DebtorId">借款人</label></div>
                 <div class="weui-cell__bd text-right">
-                    <input data-val="true" data-val-number="字段 借款人 必须是一个数字。" data-val-required="请输入借款人" id="DebtorId"
-                           name="DebtorId" type="hidden" value="44041">
+                    <%--<input data-val="true" data-val-number="字段 借款人 必须是一个数字。" data-val-required="请输入借款人" id="DebtorId"
+                           name="DebtorId" type="hidden" value="44041">--%>
                     <shiro:principal property="nickName"/>
                 </div>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__hd weui-label"><label for="DebtorId">借款人手机号</label></div>
                 <div class="weui-cell__bd text-right">
-                    <input data-val="true" data-val-number="字段 借款人 必须是一个数字。" data-val-required="请输入借款人" id="DebtorId"
-                           name="DebtorId" type="hidden" value="${user.mobile}">
+                    <%--<input data-val="true" data-val-number="字段 借款人 必须是一个数字。" data-val-required="请输入借款人" id="DebtorId"
+                           name="DebtorId" type="hidden" value="${user.mobile}">--%>
                     ${user.mobile}
                 </div>
             </div>

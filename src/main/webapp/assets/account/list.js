@@ -1,4 +1,4 @@
-/*
+
 $(function () {
     var c = $("#formList");
     var e = $("#datalist");
@@ -39,23 +39,10 @@ $(function () {
             }
         }
     });
-    $("#Keyword").on({
-        change: function () {
-            var g = $('#divTabs input[type="radio"][name="Status"][value=""]'), j = g.parents(".dropdownbox").prev();
-            g.attr({checked: true});
-            j.children("span").text(g.parent(".weui-cell__ft").prev(".weui-cell__bd").html());
-            $("#IsOverdue").val(g.data("isoverdue"));
-            var h = $('#divTabs input[type="radio"][name="Sorted"][value="RepaymentDateDESC"]'),
-                i = h.parents(".dropdownbox").prev();
-            h.attr({checked: true});
-            i.children("span").text(h.parent(".weui-cell__ft").prev(".weui-cell__bd").html());
-            $("#Page").val(1);
-            b = true
-        }
-    });
     $(".dropdownbox .dropdownbox-mask").click(function () {
         d()
     });
+
     c.appAutoSubmit().on({
         submit: function (h) {
             h.preventDefault();
@@ -74,29 +61,44 @@ $(function () {
                     a = true
                 },
                 onSuccess: function (i) {
-                    if (i.pageCount === 0 || i.pageCount == g.Page) {
-                        b = false;
-                        $("#divLoadMore").hide()
-                    } else {
+
+
                         b = true;
-                        $("#divLoadMore").show()
-                    }
-                    if (g.Page == 1) {
+                        //$("#divLoadMore").show()
+                    $("#divLoadMore").hide();
                         e.empty()
+
+                    if (i) {
+                        //renderIOU(f, e, i.data)
+                        $("#datalist").append(i);
                     }
-                    if (i.data && i.data.length) {
-                        renderIOU(f, e, i.data)
-                    }
-                    if (e.children().length) {
-                        $("#divEnd").show()
-                    } else {
-                        $("#divNone").show()
-                    }
+
                     a = false
+                },
+                onError:function (i) {
+
+
+                    b = true;
+                    //$("#divLoadMore").show()
+
+                    e.empty()
+
+                    if (i) {
+                        //renderIOU(f, e, i.data)
+                        $("#datalist").append(i.responseText);
+                    }
+
+                    $('#divLoadMore').hide();
+
+                    a = false
+
                 }
             })
+
         }
     }).submit();
+
+
     var b = false;
     var a = false;
     $(document.body).infinite(100).on("infinite", function () {
@@ -107,6 +109,4 @@ $(function () {
         $("#Page").val(parseInt($("#Page").val()) + 1);
         c.submit()
     })
-}
-
-*/
+})

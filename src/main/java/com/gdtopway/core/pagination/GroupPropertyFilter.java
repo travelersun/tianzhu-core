@@ -9,6 +9,7 @@ import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.gdtopway.core.web.json.JsonViews;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 
@@ -69,7 +70,7 @@ public class GroupPropertyFilter {
         return forceAndFilters;
     }
 
-    private GroupPropertyFilter() {
+    public GroupPropertyFilter() {
     }
 
     private GroupPropertyFilter(String groupType) {

@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 
@@ -45,7 +47,7 @@
     </button>
 </div>
 <div id="divMobilePay" class="tips-container hide">
-    <img src="./凭证详情_files/jt.png" class="mobilepay-arrow">
+    <img src="" class="mobilepay-arrow">
     <div class="mobilepay-text">
         <p>请选择</p>
         <p>在手机浏览器中打开</p>
@@ -56,7 +58,7 @@
         知道啦
     </button>
 </div>
-<form action="http://ypz.youmaijinkong.com/m/iou/updatestatus" id="formUpdateStatus" method="post" novalidate="novalidate"> <input id="hCustomerId" type="hidden" value="26974">
+<form action="" id="formUpdateStatus" method="post" novalidate="novalidate"> <input id="hCustomerId" type="hidden" value="26974">
     <input id="hCreditorId" type="hidden" value="26974">
     <input id="hCreditorIsAuthenticated" type="hidden" value="TRUE">
     <input id="hDebtorId" type="hidden" value="82415">
@@ -71,22 +73,22 @@
     <input id="hIsSynchronizedContract" type="hidden" value="FALSE">
     <input id="hIsUploadCredit" type="hidden" value="FALSE">
     <input data-val="true" data-val-number="字段 凭证Id 必须是一个数字。" data-val-required="请输入凭证Id" id="LoanIOUId" name="LoanIOUId" type="hidden" value="612913"><input data-val="true" data-val-required="请输入状态" id="Status" name="Status" type="hidden" value=""><input data-val="true" data-val-date="字段 实际还款日期 必须是日期。" data-val-requiredifequals="请输入实际还款日期" data-val-requiredifequals-propertyname="Status" data-val-requiredifequals-propertyvalues="Destroyed" id="RealRepaymentDate" name="RealRepaymentDate" type="hidden" value="2018/1/28 0:00:00"> <div class="breadcrumb">
-        <a href="http://ypz.youmaijinkong.com/m/customer/index">
+        <a href="${ctx}/m">
             <span class="fa fa-chevron-left"></span>
             返回首页
         </a>
     </div>
     <div class="container">
         <a id="btnQRCode" href="javascript:void(0);" class="icon-qrcode">
-            <img src="./凭证详情_files/qrcode.png">
+            <%--<img src="">--%>
         </a>
         <div class="weui-flex text-center">
             <div class="weui-flex__item">
                 <div class="head-img-container">
-                    <img src="./凭证详情_files/322c9018d5644d139c1490c9f300445d" class="head-img">
+                    <%--<img src="" class="head-img">--%>
                 </div>
-                <div class="user-name">余树昭</div>
-                <img id="imgCreditorSignatureImage" src="./凭证详情_files/c885ae107e4347ffae4194b58d19475e.png" class="signature-img">
+                <div class="user-name">${order.lendername}</div>
+               <%-- <img id="imgCreditorSignatureImage" src="" class="signature-img">--%>
             </div>
             <div class="weui-flex__item to">
                 <span class="fa fa-angle-double-right mr5"></span>
@@ -95,74 +97,67 @@
             </div>
             <div class="weui-flex__item">
                 <div class="head-img-container" style="position: relative;">
-                    <img id="imgDebtorHeadImage" src="./凭证详情_files/06fd9ffe94634210a74d318752441b8e" class="head-img">
+                    <%--<img id="imgDebtorHeadImage" src="" class="head-img">--%>
                     <div id="divDebtorLiabilityTips" class="debtor-liability-tips" style="display: block; top: -15.6118px;">
                         <i class="fa fa-hand-o-down"></i>
                     </div>
                 </div>
-                <div class="user-name">石爱国</div>
-                <img id="imgDebtorSignatureImage" src="./凭证详情_files/b08a3d0be3bd4c899e18aa19e44988b5.png" class="signature-img">
+                <div class="user-name"><shiro:principal property="nickName"/></div>
+                <%--<img id="imgDebtorSignatureImage" src="" class="signature-img">--%>
             </div>
         </div>
         <div class="weui-cells mt15">
             <div class="weui-cell_border"></div>
             <div class="weui-cell">
                 <div class="weui-cell__bd">借款日期</div>
-                <div class="weui-cell__ft text-dark">2018-01-22</div>
+                <div class="weui-cell__ft text-dark"><fmt:formatDate value="${order.putoutdate}" pattern="yyyy-MM-dd"/></div>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__bd">还款日期</div>
-                <div class="weui-cell__ft text-dark">2018-01-28</div>
+                <div class="weui-cell__ft text-dark"><fmt:formatDate value="${order.maturity}" pattern="yyyy-MM-dd"/></div>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__bd">借款金额</div>
                 <div class="weui-cell__ft text-currency">
-                    1500.00
+                    ${order.loanmoney}
                     <span class="text-xs">元</span>
                 </div>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__bd">年化利率</div>
                 <div class="weui-cell__ft text-dark">
-                    0
+                    ${order.yrate}
                     <span class="text-xs">%</span>
                 </div>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__bd">本息共计</div>
                 <div class="weui-cell__ft text-currency">
-                    1500.00
+                    <fmt:formatNumber type="number" value="${order.loanmoney+total}" pattern="#.00"/>
                     <span class="text-xs">元</span>
                 </div>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__bd">借款用途</div>
-                <div class="weui-cell__ft text-dark">旅游</div>
+                <div class="weui-cell__ft text-dark">${order.purpose}</div>
             </div>
             <div class="weui-cell_border"></div>
             <div class="weui-cell">
                 <div class="weui-cell__bd">平台服务费</div>
                 <div class="weui-cell__ft text-dark">
-                    5.00
+                    ${order.servicemonry}
                     <span class="text-xs">元</span>
                 </div>
             </div>
-            <div class="weui-cell">
-                <div class="weui-cell__bd">协议编号</div>
-                <div class="weui-cell__ft text-dark">18012210262768906333</div>
-            </div>
-            <div class="weui-cell">
-                <div class="weui-cell__bd">
-                    <a id="linkAgreement" href="javascript:void(0);" data-intermediaversion="2" data-iouversion="2">电子协议（点击查看）</a>
-                </div>
-                <div class="weui-cell__ft">
-                    <a id="linkMore" href="javascript:void(0);" class="app-hide">更多</a>
-                </div>
-            </div>
-            <img src="/assets/fund/status-effecting.png" class="status">
+
+            <c:if test="${'2' eq order.status}">
+                <img src="/assets/fund/status-effecting.png" class="status">
+            </c:if>
+
+
         </div>
     </div>
-    <div id="divAction" class="weui-submit-area">
+    <%--<div id="divAction" class="weui-submit-area">
         <div class="weui-flex">
             <div class="weui-flex__item mr10">
                 <button id="btnExtend" class="btn btn-primary-solid" type="button">展期</button>
@@ -171,20 +166,20 @@
                 <button class="btn btn-success" type="button" data-status="Destroyed">对方已还款，撕毁凭证</button>
             </div>
         </div>
-    </div>
+    </div>--%>
 </form>
 
-<script type="text/javascript" src="/assets/fund/jquery-2.1.4.min.js.下载"></script>
-<script type="text/javascript" src="/assets/fund/jquery.transit.js.下载"></script>
-<script type="text/javascript" src="/assets/fund/jquery.validate.min.js.下载"></script>
-<script type="text/javascript" src="/assets/fund/jquery.validate.unobtrusive.min.js.下载"></script>
-<script type="text/javascript" src="/assets/fund/jweixin-1.2.0.js.下载"></script>
-<script type="text/javascript" src="/assets/fund/jquery-weui.min.js.下载"></script>
-<script type="text/javascript" src="/assets/fund/crypto-js.js.下载"></script>
-<script type="text/javascript" src="/assets/fund/ym.ypz.jquery.validate.unobtrusive.js.下载"></script>
-<script type="text/javascript" src="/assets/fund/ym.ypz.enum.mapping.js.下载"></script>
-<script type="text/javascript" src="/assets/fund/ym.ypz.form.js.下载"></script>
-<script type="text/javascript" src="/assets/fund/ym.ypz.mobile.js.下载"></script>
+<script type="text/javascript" src="/assets/fund/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="/assets/fund/jquery.transit.js"></script>
+<script type="text/javascript" src="/assets/fund/jquery.validate.min.js"></script>
+<script type="text/javascript" src="/assets/fund/jquery.validate.unobtrusive.min.js"></script>
+<script type="text/javascript" src="/assets/fund/jweixin-1.2.0.js"></script>
+<script type="text/javascript" src="/assets/fund/jquery-weui.min.js"></script>
+<script type="text/javascript" src="/assets/fund/crypto-js.js"></script>
+<script type="text/javascript" src="/assets/fund/ym.ypz.jquery.validate.unobtrusive.js"></script>
+<script type="text/javascript" src="/assets/fund/ym.ypz.enum.mapping.js"></script>
+<script type="text/javascript" src="/assets/fund/ym.ypz.form.js"></script>
+<script type="text/javascript" src="/assets/fund/ym.ypz.mobile.js"></script>
 <script type="text/javascript">
     var Environment = 'PRO';
     var WechatParameters = 'd3hjMWY4YzMxMjljMDg4YTNhfDE1MTcxNDAyMzV8NjUzNkYzNDNCRTkxMTFDNkZCQTUxNkQ3OTI2ODRCQUN8NzI1YzY2YjQwMTJkMzljMjMwYjcyMWI4ZjBmMDFlYWNkNDI0M2Y5Mw==';

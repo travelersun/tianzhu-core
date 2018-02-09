@@ -2,6 +2,7 @@ package com.gdtopway.biz.fund.web;
 
 import com.gdtopway.biz.fund.entity.FundCustomer;
 import com.gdtopway.biz.fund.entity.FundCustomerOrder;
+import com.gdtopway.biz.fund.service.FundCustomerOrderService;
 import com.gdtopway.biz.fund.service.FundCustomerService;
 import com.gdtopway.biz.shop.entity.SiteUser;
 import com.gdtopway.biz.shop.service.SiteUserService;
@@ -13,6 +14,7 @@ import com.gdtopway.core.pagination.PropertyFilter;
 import com.gdtopway.core.security.AuthContextHolder;
 import com.gdtopway.core.security.AuthUserDetails;
 import com.gdtopway.core.service.BaseService;
+import com.gdtopway.core.util.DateUtils;
 import com.gdtopway.core.util.ImageUtils;
 import com.gdtopway.core.web.BaseController;
 import com.gdtopway.core.web.captcha.ImageCaptchaServlet;
@@ -22,14 +24,17 @@ import com.gdtopway.core.web.view.OperationResult;
 import com.gdtopway.module.auth.entity.User;
 import com.gdtopway.module.auth.entity.User.AuthTypeEnum;
 import com.gdtopway.module.auth.service.UserService;
+import com.gdtopway.module.sys.entity.DataDict;
 import com.gdtopway.module.sys.entity.NotifyMessage;
 import com.gdtopway.module.sys.entity.UserMessage;
+import com.gdtopway.module.sys.service.DataDictService;
 import com.gdtopway.module.sys.service.NotifyMessageService;
 import com.gdtopway.module.sys.service.SmsVerifyCodeService;
 import com.gdtopway.module.sys.service.UserMessageService;
 import com.gdtopway.support.service.DynamicConfigService;
 import com.gdtopway.support.service.MailService;
 import com.google.common.collect.Maps;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authz.annotation.RequiresRoles;
@@ -38,7 +43,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -50,9 +57,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 @Controller
 @RequestMapping(value = "/m")
@@ -64,7 +69,13 @@ public class MIndexController extends BaseController<SiteUser, String> {
     private UserService userService;
 
     @Autowired
+    private DataDictService dataDictService;
+
+    @Autowired
     FundCustomerService fundCustomerService;
+
+    @Autowired
+    FundCustomerOrderService fundCustomerOrderService;
 
     @Autowired
     private SiteUserService siteUserService;
@@ -96,7 +107,16 @@ public class MIndexController extends BaseController<SiteUser, String> {
 
         FundCustomer customer = fundCustomerService.findByProperty("phone",user.getAuthUid());
 
+        List<DataDict> datadict = dataDictService.findChildrenByRootPrimaryKey("SKZHEWM");
+        if(CollectionUtils.isNotEmpty(datadict)){
+            model.addAttribute("brCodeImgPath",datadict.get(0).getImagePathValue());
+        }
+
         model.addAttribute("customer",customer);
+
+        model.addAttribute("pendingOrder",fundCustomerService.findOrderByCustomerAndStatus(customer,"1"));
+
+        model.addAttribute("effectOrder",fundCustomerService.findOrderByCustomerAndStatus(customer,"2"));
 
         return "m/index";
     }
@@ -113,18 +133,34 @@ public class MIndexController extends BaseController<SiteUser, String> {
     }
 
     @RequestMapping(value = "certdetail", method = RequestMethod.GET)
-    public String certdetail(Model model) {
+    public String certdetail(Model model,@RequestParam("orderId") String orderId) {
 
-        User user =  AuthContextHolder.findAuthUser();
+        FundCustomerOrder order = null;
 
-        model.addAttribute("user",user);
+        Double total=0d;
+
+        if(StringUtils.isNotBlank(orderId)){
+            order = fundCustomerOrderService.findOne(orderId);
+
+            Long dif = DateUtils.getDiffDay(order.getPutoutdate(),order.getMaturity());
+
+            total = order.getLoanmoney()*dif*order.getYrate()/36500;
+        }
+
+        /*User user =  AuthContextHolder.findAuthUser();
+
+        model.addAttribute("user",user);*/
+
+
+        model.addAttribute("order",order);
+        model.addAttribute("total",total);
 
         return "m/cert-detail";
     }
 
     @RequestMapping(value = "cert", method = RequestMethod.POST)
     @ResponseBody
-    public OperationResult certp(FundCustomerOrder order) {
+    public OperationResult certp( FundCustomerOrder order) {
 
         User user =  AuthContextHolder.findAuthUser();
 
@@ -137,9 +173,69 @@ public class MIndexController extends BaseController<SiteUser, String> {
         }
     }
 
-    @RequestMapping(value = "mycert", method = RequestMethod.GET)
-    public String mycert(Model model) {
+    @RequestMapping(value = "mycert", method = {RequestMethod.GET,RequestMethod.POST})
+    public String mycert(Model model,@RequestParam(value = "Status",required = false) String Status,@RequestParam(value = "Sorted",required = false) String Sorted) {
+
+        User user =  AuthContextHolder.findAuthUser();
+
+        FundCustomer customer = fundCustomerService.findByProperty("phone",user.getAuthUid());
+
+        GroupPropertyFilter filter = new GroupPropertyFilter();
+        filter.append(new PropertyFilter(PropertyFilter.MatchType.EQ,"fundCustomer",customer));
+
+        Sort sort = null;
+        if(StringUtils.isNotBlank(Status)){
+            filter.append(new PropertyFilter(PropertyFilter.MatchType.EQ,"status",Status));
+
+        }
+
+        if(StringUtils.isNotBlank(Sorted)){
+            sort = new Sort(Sort.Direction.fromString(Sorted.split("_")[1]),Sorted.split("_")[0]);
+
+        }
+
+        List<FundCustomerOrder> orders = fundCustomerOrderService.findByFilters(filter,sort);
+
+        customer.setFundCustomerOrders(orders);
+
+        List<DataDict> datadict = dataDictService.findChildrenByRootPrimaryKey("SKZHEWM");
+        if(CollectionUtils.isNotEmpty(datadict)){
+            model.addAttribute("brCodeImgPath",datadict.get(0).getImagePathValue());
+        }
+
+        model.addAttribute("customer",customer);
+
         return "m/mycert";
+    }
+
+    @RequestMapping(value = "mycertp", method = {RequestMethod.GET,RequestMethod.POST})
+    public String mycertp(Model model,@RequestParam(value = "Status",required = false) String Status,@RequestParam(value = "Sorted",required = false) String Sorted) {
+
+        User user =  AuthContextHolder.findAuthUser();
+
+        FundCustomer customer = fundCustomerService.findByProperty("phone",user.getAuthUid());
+
+        GroupPropertyFilter filter = new GroupPropertyFilter();
+        filter.append(new PropertyFilter(PropertyFilter.MatchType.EQ,"fundCustomer",customer));
+
+        Sort sort = null;
+        if(StringUtils.isNotBlank(Status)){
+            filter.append(new PropertyFilter(PropertyFilter.MatchType.EQ,"status",Status));
+
+        }
+
+        if(StringUtils.isNotBlank(Sorted)){
+            sort = new Sort(Sort.Direction.fromString(Sorted.split("_")[1]),Sorted.split("_")[0]);
+
+        }
+
+        List<FundCustomerOrder> orders = fundCustomerOrderService.findByFilters(filter,sort);
+
+        customer.setFundCustomerOrders(orders);
+
+        model.addAttribute("customer",customer);
+
+        return "m/mycertp";
     }
 
     @RequestMapping(value = "/password/forget", method = RequestMethod.GET)

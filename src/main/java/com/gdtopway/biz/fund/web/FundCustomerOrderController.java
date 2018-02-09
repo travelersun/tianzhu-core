@@ -9,6 +9,7 @@ import com.gdtopway.core.service.BaseService;
 import com.gdtopway.core.web.BaseController;
 import com.gdtopway.core.web.json.JsonViews;
 import com.gdtopway.core.web.view.OperationResult;
+import com.gdtopway.module.sys.service.DataDictService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,6 +34,9 @@ public class FundCustomerOrderController extends BaseController<FundCustomerOrde
     @Autowired
     private FundCustomerOrderService fundCustomerOrderService;
 
+    @Autowired
+    private DataDictService dataDictService;
+
     @Override
     protected BaseService<FundCustomerOrder, String> getEntityService() {
         return fundCustomerOrderService;
@@ -47,6 +51,7 @@ public class FundCustomerOrderController extends BaseController<FundCustomerOrde
     @RequiresPermissions("现金贷管理:客户借款凭证表")
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String index(Model model) {
+        model.addAttribute("orderStatus",dataDictService.findMapDataByRootPrimaryKey("order_status"));
         return "admin/fund/fundCustomerOrder-index";
     }   
     
@@ -66,6 +71,7 @@ public class FundCustomerOrderController extends BaseController<FundCustomerOrde
     @RequiresPermissions("现金贷管理:客户借款凭证表")
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
     public String editShow(Model model) {
+        model.addAttribute("orderStatus",dataDictService.findMapDataByRootPrimaryKey("order_status"));
         return "admin/fund/fundCustomerOrder-inputBasic";
     }
 

@@ -28,7 +28,7 @@
 					<div class="form-group">
 						<label class="control-label">登录账号</label>
 						<div class="controls">
-			                <form:input path="user.authUid" class="form-control"/>
+			                <form:input path="user.authUid" class="form-control" readonly="true" />
 						</div>
 					</div>
 	            </div>
@@ -36,7 +36,7 @@
 	            <div class="form-group">
                 	<label class="control-label">姓名</label>
                 		<div class="controls">
-                			<form:input path="name" class="form-control"/>
+                			<form:input path="name" class="form-control" readonly="true"/>
                 		</div>
                 </div>
 	            </div>
@@ -46,7 +46,7 @@
 					<div class="form-group">
 						<label class="control-label">手机号</label>
 						<div class="controls">
-			                <form:input path="phone" class="form-control"/>
+			                <form:input path="phone" class="form-control" readonly="true" />
 						</div>
 					</div>
 					</div>

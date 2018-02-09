@@ -26,13 +26,23 @@
 	        <div class="row">
 	            <div class="col-md-6">
 					<div class="form-group">
-						<label class="control-label">客户信息对象</label>
+						<label class="control-label">客户姓名</label>
 						<div class="controls">
-			                <form:input path="fundCustomer" class="form-control"/>
+			                <form:input path="fundCustomer.name" class="form-control" readonly="true" />
 						</div>
 					</div>
 	            </div>
 	        </div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label">客户手机号</label>
+						<div class="controls">
+							<form:input path="fundCustomer.phone" class="form-control" readonly="true"/>
+						</div>
+					</div>
+				</div>
+			</div>
 	        <div class="row">
 	            <div class="col-md-6">
 					<div class="form-group">
@@ -48,7 +58,7 @@
 					<div class="form-group">
 						<label class="control-label">借款日期</label>
 						<div class="controls">
-			                <form:input path="putoutdate" class="form-control"/>
+			                <form:input path="putoutdate" class="form-control" data-picker="date-time"/>
 						</div>
 					</div>
 	            </div>
@@ -58,7 +68,7 @@
 					<div class="form-group">
 						<label class="control-label">还款日期</label>
 						<div class="controls">
-			                <form:input path="maturity" class="form-control"/>
+			                <form:input path="maturity" class="form-control" data-picker="date-time"/>
 						</div>
 					</div>
 	            </div>
@@ -76,7 +86,7 @@
 	        <div class="row">
 	            <div class="col-md-6">
 					<div class="form-group">
-						<label class="control-label">年化利率</label>
+						<label class="control-label">年化利率(%)</label>
 						<div class="controls">
 			                <form:input path="yrate" class="form-control"/>
 						</div>
@@ -118,7 +128,7 @@
 					<div class="form-group">
 						<label class="control-label">状态</label>
 						<div class="controls">
-			                <form:input path="status" class="form-control"/>
+							<form:select path="status" class="form-control" items="${orderStatus }" />
 						</div>
 					</div>
 	            </div>
