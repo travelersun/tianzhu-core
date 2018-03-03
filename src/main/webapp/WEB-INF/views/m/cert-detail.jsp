@@ -85,7 +85,7 @@
         <div class="weui-flex text-center">
             <div class="weui-flex__item">
                 <div class="head-img-container">
-                    <%--<img src="" class="head-img">--%>
+                    <img src="/assets/account/jie.png" class="head-img">
                 </div>
                 <div class="user-name">${order.lendername}</div>
                <%-- <img id="imgCreditorSignatureImage" src="" class="signature-img">--%>
@@ -97,10 +97,10 @@
             </div>
             <div class="weui-flex__item">
                 <div class="head-img-container" style="position: relative;">
-                    <%--<img id="imgDebtorHeadImage" src="" class="head-img">--%>
-                    <div id="divDebtorLiabilityTips" class="debtor-liability-tips" style="display: block; top: -15.6118px;">
+                    <img src="/assets/account/dai.png" class="head-img">
+                    <%--<div id="divDebtorLiabilityTips" class="debtor-liability-tips" style="display: block; top: -15.6118px;">
                         <i class="fa fa-hand-o-down"></i>
-                    </div>
+                    </div>--%>
                 </div>
                 <div class="user-name"><shiro:principal property="nickName"/></div>
                 <%--<img id="imgDebtorSignatureImage" src="" class="signature-img">--%>

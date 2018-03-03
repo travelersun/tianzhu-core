@@ -4,6 +4,7 @@ import com.gdtopway.biz.fund.entity.FundCustomer;
 import com.gdtopway.biz.fund.entity.FundCustomerOrder;
 import com.gdtopway.biz.fund.service.FundCustomerOrderService;
 import com.gdtopway.biz.fund.service.FundCustomerService;
+import com.gdtopway.biz.fund.service.FundHelpService;
 import com.gdtopway.biz.shop.entity.SiteUser;
 import com.gdtopway.biz.shop.service.SiteUserService;
 import com.gdtopway.core.annotation.MenuData;
@@ -95,6 +96,10 @@ public class MIndexController extends BaseController<SiteUser, String> {
     @Autowired
     private UserMessageService userMessageService;
 
+
+    @Autowired
+    private FundHelpService fundHelpService;
+
     @Override
     protected BaseService<SiteUser, String> getEntityService() {
         return siteUserService;
@@ -128,6 +133,8 @@ public class MIndexController extends BaseController<SiteUser, String> {
         User user =  AuthContextHolder.findAuthUser();
 
         model.addAttribute("user",user);
+
+        model.addAttribute("servicemonry",fundHelpService.getServiceAmount());
 
         return "m/certificate";
     }

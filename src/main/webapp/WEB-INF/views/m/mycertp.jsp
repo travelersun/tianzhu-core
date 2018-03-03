@@ -8,7 +8,7 @@
     <a href=" <c:if test="${'1' eq order.status}">javascript:showDialog();</c:if> <c:if test="${'1' != order.status}">${ctx}/m/certdetail?orderId=${order.id}</c:if> " class="card-container">
         <div class="weui-flex border-bottom">
             <div>
-                <img src="" class="head-img"></div>
+                <img src="/assets/account/jiekuanren.png" class="head-img"></div>
             <div class="ml10 text-center">
                 <div class="text-dark" style="line-height: 25px;"><shiro:principal property="nickName"/></div>
                 <div class="text-xs" style="line-height: 15px;">(借款人)</div>

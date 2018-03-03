@@ -11,6 +11,7 @@ import com.gdtopway.module.auth.entity.UserR2Role;
 import com.gdtopway.module.auth.service.RoleService;
 import com.gdtopway.module.auth.service.UserService;
 import com.google.common.collect.Lists;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -151,6 +152,24 @@ public class FundCustomerService extends BaseService<FundCustomer,String> {
         List<FundCustomerOrder> result = fundCustomerOrderDao.findOrderByCustomerId(fundCustomer.getId(),status);
 
         return result;
+
+    }
+
+    public String isAlreadyRegister(FundCustomer fundCustomer){
+
+        String phone = fundCustomer.getPhone();
+
+        if(StringUtils.isNotBlank(phone)){
+
+            FundCustomer customer = this.findByProperty("phone",phone);
+
+            if(null != customer){
+                return "true";
+            }
+
+        }
+
+        return "false";
 
     }
 

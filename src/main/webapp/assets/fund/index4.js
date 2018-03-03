@@ -111,7 +111,7 @@ $(function () {
             $this.parent().children("img").attr("src", response.data)
         },
         onError: function (response, $this) {
-            $.toptip("您的网络开了小差，请刷新重试", 5000, "error")
+            //$.toptip("您的网络开了小差，请刷新重试", 5000, "error")
         },
         onComplete: function (response, completeString, $this) {
             $this.parents(".weui-uploader__bd").next().hide()

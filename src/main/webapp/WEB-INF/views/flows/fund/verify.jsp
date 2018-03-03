@@ -12,7 +12,7 @@
 <meta name="description" content="">
 <meta itemprop="name" content="">
 <meta itemprop="description" content="">
-<title>万能钱庄 - 互联网金融风控与导流平台</title>
+<title>联系人信息</title>
 <link rel="stylesheet" type="text/css" href="/assets/fund/weui.min.css">
 <link rel="stylesheet" type="text/css" href="/assets/fund/jquery-weui.min.css">
 <link rel="stylesheet" type="text/css" href="/assets/fund/font-awesome.min.css">

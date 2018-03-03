@@ -29,7 +29,7 @@
 <body style="position: fixed; top: 0px; left: 0px; right: 0px;">
 <form action="${ctx}/m/cert" id="formNew" method="post" novalidate="novalidate">
     <div class="container">
-        <img src="" class="head-img">
+        <img src="/assets/account/dai.png" class="head-img">
         <div class="weui-cells weui-cells_form">
             <div class="weui-cell">
                 <div class="weui-cell__hd weui-label"><label for="DebtorId">借款人</label></div>
@@ -199,9 +199,9 @@
                 <div class="weui-cell__bd text-right">
                     <input data-val="true" data-val-number="字段 服务费 必须是一个数字。" data-val-range="请输入0~1.79769313486232E+308"
                            data-val-range-max="1.79769313486232E+308" data-val-range-min="0" data-val-required="请输入服务费"
-                           id="ServiceCharge" name="servicemonry" type="hidden" value="5">
+                           id="ServiceCharge" name="servicemonry" type="hidden" value="${servicemonry}">
                     <span class="text-currency">
-5.00
+${servicemonry}
 <span class="text-xs">元</span>
 </span>
                 </div>

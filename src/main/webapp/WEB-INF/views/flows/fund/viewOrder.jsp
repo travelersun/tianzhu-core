@@ -3,7 +3,7 @@
 <html>
  <head>
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-      <titleView Order</title>
+      <title>View Order</title>
   </head>
   <h1>View Order</h1>
   <a href="${flowExecutionUrl}&_eventId=confirmed">Confirmed</a>

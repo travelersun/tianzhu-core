@@ -39,7 +39,7 @@ public class FundCustomer extends BaseNativeEntity {
     String phone;
 
     @MetaData(value = "身份证号")
-    @Column(length = 34, nullable = false,unique = true)
+    @Column(length = 34, nullable = false,unique = false)
     String certid;
 
     @MetaData(value = "微信号")
@@ -83,6 +83,10 @@ public class FundCustomer extends BaseNativeEntity {
 
     @Transient
     String password;
+
+
+    @Transient
+    String tempdata;
 
 
 }

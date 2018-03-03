@@ -65,6 +65,11 @@ public class ImageCaptchaServlet extends HttpServlet implements Servlet {
         }
     }
 
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        this.doGet(req, resp);
+    }
+
     public static boolean validateResponse(HttpServletRequest request, String userCaptchaResponse) {
         try {
             String captchaId = null;

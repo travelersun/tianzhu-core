@@ -101,7 +101,7 @@
     <a href="${ctx}/m/certdetail?orderId=${order.id}" class="card-container">
         <div class="weui-flex border-bottom">
             <div>
-                <img src="" class="head-img"></div>
+                <img src="/assets/account/jiekuanren.png" class="head-img"></div>
             <div class="ml10 text-center">
                 <div class="text-dark" style="line-height: 25px;"><shiro:principal property="nickName"/></div>
                 <div class="text-xs" style="line-height: 15px;">(借款人)</div>
@@ -140,7 +140,7 @@
 </form>
 <div id="dialog" title="基本的对话框" style="display: none;z-index: 100000;">
     <p>这是一个默认的对话框，用于显示信息。对话框窗口可以移动，调整尺寸，默认可通过 'x' 图标关闭。</p>
-    <img src="${brCodeImgPath}">
+    <img src="${brCodeImgPath}"width="280" height="280">
 </div>
 <script type="text/javascript" src="/assets/account/jquery-2.1.4.min.js"></script>
 <script type="text/javascript" src="/assets/account/jquery.transit.js"></script>

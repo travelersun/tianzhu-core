@@ -13,10 +13,34 @@
 
     <var name="cocntact" class="com.gdtopway.biz.fund.entity.FunfCustomerContact" />
 
+    <var name="isAlreadyRegister" class="java.lang.String" />
+
+    <var name="creditAmount" class="java.lang.String" />
+
+    <var name="weixinImgPath" class="java.lang.String" />
+
+    <var name="serviceAmount" class="java.lang.String" />
+
+    <var name="userCaptchaResponse" class="java.lang.String" />
+
     <view-state id="index" view="flows/fund/index" model="customer">
-        <transition on="submit" to="personInfo">
+        <transition on="submit" to="verifyCustomer">
         </transition>
     </view-state>
+
+
+    <action-state id="verifyCustomer">
+        <evaluate expression="fundCustomerService.isAlreadyRegister(customer)" result="isAlreadyRegister"/>
+        <transition on="true" to="returnToIndex" />
+        <transition on="false" to="verifyCustomer2" />
+    </action-state>
+
+    <action-state id="verifyCustomer2">
+        <evaluate expression="fundHelpService.validateResponse(customer.getTempdata())" result="userCaptchaResponse"/>
+        <transition on="true" to="personInfo" />
+        <transition on="false" to="index" />
+    </action-state>
+
 
     <view-state id="personInfo" view="flows/fund/personInfo" model="customer" >
         <transition on="submit" to="additionInfo">
@@ -58,8 +82,42 @@
 
     <action-state id="processCustcomer">
         <evaluate expression="fundCustomerService.createCustomer(customer,caddinfo,cpicture,cocntact)" />
-        <transition to="returnToIndex" />
+        <transition to="creditAmount" />
     </action-state>
+
+    <action-state id="creditAmount">
+        <evaluate expression="fundHelpService.getCreditAmount()" result="flowScope.creditAmount"/>
+        <transition to="weixinImgPath" />
+    </action-state>
+
+    <action-state id="weixinImgPath">
+
+        <evaluate expression="fundHelpService.getWeixinImgPath()" result="flowScope.weixinImgPath"/>
+
+        <transition to="serviceAmount" />
+    </action-state>
+
+    <action-state id="serviceAmount">
+
+        <evaluate expression="fundHelpService.getServiceAmount()" result="flowScope.serviceAmount"/>
+        <transition to="finish" />
+    </action-state>
+
+
+    <view-state id="finish" view="flows/fund/finish" >
+        <!--<on-entry>
+            <evaluate expression="fundHelpService.getCreditAmount()" result="creditAmount"/>
+            <evaluate expression="fundHelpService.getWeixinImgPath()" result="weixinImgPath"/>
+            <evaluate expression="fundHelpService.getServiceAmount()" result="serviceAmount"/>
+        </on-entry>-->
+
+        <attribute name="creditAmount" value="creditAmount" ></attribute>
+        <attribute name="weixinImgPath" value="weixinImgPath"></attribute>
+        <attribute name="serviceAmount" value="serviceAmount"></attribute>
+
+        <transition on="confirmed" to="returnToIndex">
+        </transition>
+    </view-state>
 
     <end-state id="returnToIndex" view="externalRedirect:/index.jsp">
     </end-state>

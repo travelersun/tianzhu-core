@@ -30,8 +30,8 @@
 </div>
 <div class="form-group">
 <span class="input-icon">
-<input class="form-control" data-val="true" data-val-required="请输入 图片验证码" id="CaptchaCode" name="CaptchaCode" placeholder="等式计算结果" type="text" value="">
-<img id="imgCaptchaCode" style="position:absolute;top:-1px;right:5px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAAAeCAYAAADaW7vzAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJzSURBVGhD7Za7SgNBFIaDEAjEgK2oELQ0mEpEC8FasBTxGQKmkDQWaS2sBUHfwcLCTvBBrH0AsV1zNjPL2bNnrjt7NR/8RWbOzszOx+yk01ZGa7M5jmiuP9v3781ZLAPdeBnR3TyaIoTbdIjorgVfvw/511M3IdymQ0R3bQkiA6hKCLfpENFdS2bTz8z6QEQwGZKypDRl41VQIcFFSJp+sSuIFMmFlFKYDKCFQjgBXJszTy+vH4XKAFp6QihYiJcUEMHdI8FZCTGDT0XhUtomZP37knsfbyH0E9UmId6b4gojxXleEMHdF3USgl+KRgdXDykUJMV2XlqnSlApzz+n2bEspaQW5QB+DkcFV6sLixBiVYvhTgWFCKFzyBhhZQAFC8HYjBFtputMURF1h1Z1CTYyACSEjo9/y7YMIEIpA6hayNvkai5zPd7CNTbhSPq7t/uqmgQQcXN3mDxjSIzms5WpxWhFSMoWcjQeRVjCsisoqbUq/nnF2J4KikIInjeeG2MlA/AQgmPNxe5gUQ9xe84ROX4yh0qIrwzAQkgKaxmApRCKcnINPs+4gMdXBkTkkSHRXO4JxvuCgxMyfDyZ44hmCrsIDa71QYGTEkKERHO5xziLwJhOCRUE2ThOPj+phWhwrQ8KyNDdJ67ohOSSAfh/tnpR/2wn4oSJGkxm4WUTUgjA3SW5ZQAWQuhGGjeXChoc9Ba1S4GipBIKOiV+94UKByE0JrhnRAZR/zx9uhbtpRBKihCC36tdYDk0oqR2TKZ77RWig5MEEd2Vwd0j/xpOkowoKZSVEAc4STKiJAgrKQHgJEFEtxMrIQUSQpA7nc4fE8hUAUMaW20AAAAASUVORK5CYII=">
+<input class="form-control" data-val="true" data-val-required="请输入 图片验证码" id="CaptchaCode" name="tempdata" placeholder="等式计算结果" type="text" value="">
+<img id="imgCaptchaCode" style="position:absolute;top:-1px;right:5px;" src="/pub/jcaptcha.servlet">
 </span>
 </div>
 <span class="field-validation-valid form-error" data-valmsg-for="CaptchaCode" data-valmsg-replace="true"></span>

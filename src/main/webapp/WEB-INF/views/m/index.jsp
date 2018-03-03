@@ -36,7 +36,7 @@
 <div class="weui-tab">
     <div class="tab-header">
         <div class="weui-flex">
-            <div><img src="" class="header-img"></div>
+            <div><img src="/assets/account/jiekuanren.png" class="header-img"></div>
             <div class="weui-flex__item user-info">
                 <div class="name">
                     <shiro:principal property="nickName"/>
@@ -93,7 +93,7 @@
                     <a href="javascript:showDialog();" class="card-container">
                         <div class="weui-flex border-bottom">
                             <div>
-                                <img src="" class="head-img"></div>
+                                <img src="/assets/account/jiekuanren.png" class="head-img"></div>
                             <div class="ml10 text-center">
                                 <div class="text-dark" style="line-height: 25px;"><shiro:principal property="nickName"/></div>
                                 <div class="text-xs" style="line-height: 15px;">(借款人)</div>
@@ -140,7 +140,7 @@
                     <a href="${ctx}/m/certdetail?orderId=${order.id}" class="card-container">
                         <div class="weui-flex border-bottom">
                             <div>
-                                <img src="" class="head-img"></div>
+                                <img src="/assets/account/jiekuanren.png" class="head-img"></div>
                             <div class="ml10 text-center">
                                 <div class="text-dark" style="line-height: 25px;"><shiro:principal property="nickName"/></div>
                                 <div class="text-xs" style="line-height: 15px;">(借款人)</div>

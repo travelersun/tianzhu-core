@@ -63,7 +63,7 @@
 
 <div class="footer">
     <div class="mt10">2016-2018 © 天竺信息科技.</div>
-    <div class="record"><a href="#" target="_blank">粤ICP备15047528号</a></div>
+    <div class="record"><a href="#" target="_blank">粤ICP备15547636号</a></div>
 </div>
 
 <script type="text/javascript" src="/assets/account/jquery-2.1.4.min.js"></script>
