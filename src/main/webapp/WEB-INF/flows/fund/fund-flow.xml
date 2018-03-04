@@ -63,7 +63,7 @@
     </view-state>
 
     <view-state id="verify" view="flows/fund/verify" model="cocntact">
-        <transition on="submit" to="viewOrder">
+        <transition on="submit" to="processCustcomer">
         </transition>
         <transition on="preStep" to="accountInfo">
         </transition>

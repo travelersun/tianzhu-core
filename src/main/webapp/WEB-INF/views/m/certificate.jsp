@@ -212,7 +212,7 @@ ${servicemonry}
                         <input id="cbAgreement" type="checkbox" checked="checked">
                         <span>已阅读并同意</span>
                     </label>
-                    <a href="#">《居间服务协议》</a>
+                    <a href="#">《opo宝服务协议》</a>
                     <a href="#">《借款协议》</a>
                 </div>
             </div>

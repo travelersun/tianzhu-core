@@ -117,12 +117,14 @@ public class MIndexController extends BaseController<SiteUser, String> {
             model.addAttribute("brCodeImgPath",datadict.get(0).getImagePathValue());
         }
 
+
         model.addAttribute("customer",customer);
 
         model.addAttribute("pendingOrder",fundCustomerService.findOrderByCustomerAndStatus(customer,"1"));
 
         model.addAttribute("effectOrder",fundCustomerService.findOrderByCustomerAndStatus(customer,"2"));
 
+        model.addAttribute("servicemonry",fundHelpService.getServiceAmount());
         return "m/index";
     }
 
@@ -210,6 +212,7 @@ public class MIndexController extends BaseController<SiteUser, String> {
             model.addAttribute("brCodeImgPath",datadict.get(0).getImagePathValue());
         }
 
+        model.addAttribute("servicemonry",fundHelpService.getServiceAmount());
         model.addAttribute("customer",customer);
 
         return "m/mycert";
@@ -242,6 +245,7 @@ public class MIndexController extends BaseController<SiteUser, String> {
 
         model.addAttribute("customer",customer);
 
+        model.addAttribute("servicemonry",fundHelpService.getServiceAmount());
         return "m/mycertp";
     }
 

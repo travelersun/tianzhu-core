@@ -138,8 +138,8 @@
 </div>
 </div>
 </form>
-<div id="dialog" title="基本的对话框" style="display: none;z-index: 100000;">
-    <p>这是一个默认的对话框，用于显示信息。对话框窗口可以移动，调整尺寸，默认可通过 'x' 图标关闭。</p>
+<div id="dialog" title="支付提示" style="display: none;z-index: 100000;">
+    <p>你的凭证需要支付服务费${servicemonry}元才能生效，请扫描一下二维码进行联系支付</p>
     <img src="${brCodeImgPath}"width="280" height="280">
 </div>
 <script type="text/javascript" src="/assets/account/jquery-2.1.4.min.js"></script>

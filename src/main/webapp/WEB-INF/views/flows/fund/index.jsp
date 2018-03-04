@@ -25,7 +25,7 @@
 <div class="box-phoneverification">
 <div class="form-group">
 <input data-val="true" data-val-number="字段 渠道Id 必须是一个数字。" id="ChannelId" name="ChannelId" type="hidden" value="">
-<input class="form-control" data-val="true" data-val-regex="手机号 格式错误" data-val-regex-pattern="^((\+?\d{2} )?[1-9]\d{10}(-\d{1,4})?)?$" data-val-required="请输入 手机号" id="Phone" name="phone" placeholder="认证手机号" type="number" value="">
+<input class="form-control" data-val="true" data-val-regex="手机号 格式错误" data-val-regex-pattern="^((\+?\d{2} )?[1-9]\d{10}(-\d{1,4})?)?$" data-val-required="请输入 手机号" id="Phone" name="phone" placeholder="认证手机号" type="number" value="${customer.phone}">
 <span class="field-validation-valid form-error" data-valmsg-for="Phone" data-valmsg-replace="true"></span>
 </div>
 <div class="form-group">
@@ -37,7 +37,7 @@
 <span class="field-validation-valid form-error" data-valmsg-for="CaptchaCode" data-valmsg-replace="true"></span>
 <div class="form-group" style="padding-right:0">
 <input type="button" id="btnSubmit" value="立即认证" class="weui-btn weui-btn_primary" onclick="document.getElementById('frmBindPhone').submit();"/>
-<span class="help-block"><input type="checkbox" checked="checked"> 认证即同意<a href="#" style="color:#adadad;">《万能钱庄协议》</a><a href="#" style="color:#adadad;">《隐私条款》</a></span>
+<span class="help-block"><input type="checkbox" checked="checked"> 认证即同意<a href="#" style="color:#adadad;">《opo宝协议》</a><a href="#" style="color:#adadad;">《隐私条款》</a></span>
 </div>
 </div>
 </form>
