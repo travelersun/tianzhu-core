@@ -21,7 +21,7 @@
 	<description>Spring公共配置 </description>
 
 	<!-- 使用annotation 自动注册bean, 并保证@Required、@Autowired的属性被注入 -->
-	<context:component-scan base-package="com.gdtopway" use-default-filters="false"
+	<context:component-scan base-package="com.tianzhu" use-default-filters="false"
 		scoped-proxy="targetClass">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository" />
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service" />
@@ -46,7 +46,7 @@
 
 	<task:scheduler id="springScheduler" pool-size="10" />
 	<!-- 用于增强Spring @Async 注解在异步模式能捕捉到异常日志 -->
-	<bean id="handlingAsyncTaskExecutor" class="com.gdtopway.core.context.async.HandlingAsyncTaskExecutor" />
+	<bean id="handlingAsyncTaskExecutor" class="com.tianzhu.core.context.async.HandlingAsyncTaskExecutor" />
 	<!-- 建议只定义@Async注解使用，尽量不用@Scheduled而改用后面的Quartz方式便于文本定义调整定时策略 -->
 	<task:annotation-driven executor="handlingAsyncTaskExecutor" scheduler="springScheduler" />
 

@@ -1,4 +1,4 @@
-# gdtopway-core
+# tianzhu-core
 - Enterprise java web admin system
 
 ## 项目简介

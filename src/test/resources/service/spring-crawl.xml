@@ -18,7 +18,7 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
 
-	<bean id="crawlService" class="com.gdtopway.module.crawl.service.CrawlService">
+	<bean id="crawlService" class="com.tianzhu.module.crawl.service.CrawlService">
 
 	</bean>
 

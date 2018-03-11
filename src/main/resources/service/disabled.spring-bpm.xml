@@ -10,7 +10,7 @@
 		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.0.xsd">
 
     <!-- 基于检测视图是否存在自动进行activiti 用户信息 DDL初始化 -->
-	<bean name="activitiDatabaseDataInitialize" class="com.gdtopway.module.bpm.data.ActivitiDatabaseDataInitialize">
+	<bean name="activitiDatabaseDataInitialize" class="com.tianzhu.module.bpm.data.ActivitiDatabaseDataInitialize">
 		<property name="dataSource" ref="dataSourceApp" />
 	</bean>
 

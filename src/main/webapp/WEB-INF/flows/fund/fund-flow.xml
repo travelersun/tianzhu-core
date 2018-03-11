@@ -5,13 +5,13 @@
       http://www.springframework.org/schema/webflow/spring-webflow-2.4.xsd"
 >
 
-    <var name="customer" class="com.gdtopway.biz.fund.entity.FundCustomer" />
+    <var name="customer" class="com.tianzhu.biz.fund.entity.FundCustomer" />
 
-    <var name="cpicture" class="com.gdtopway.biz.fund.entity.FundCustomerPicture" />
+    <var name="cpicture" class="com.tianzhu.biz.fund.entity.FundCustomerPicture" />
 
-    <var name="caddinfo" class="com.gdtopway.biz.fund.entity.FundCustomerAddInfo" />
+    <var name="caddinfo" class="com.tianzhu.biz.fund.entity.FundCustomerAddInfo" />
 
-    <var name="cocntact" class="com.gdtopway.biz.fund.entity.FunfCustomerContact" />
+    <var name="cocntact" class="com.tianzhu.biz.fund.entity.FunfCustomerContact" />
 
     <var name="isAlreadyRegister" class="java.lang.String" />
 

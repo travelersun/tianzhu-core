@@ -2,7 +2,7 @@
 <ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ehcache.xsd"
 	updateCheck="false" monitoring="autodetect" dynamicConfig="true">
 
-	<diskStore path="java.io.tmpdir/gdtopway-ehcache" />
+	<diskStore path="java.io.tmpdir/tianzhu-ehcache" />
 
     <!-- DefaultCache setting. -->
 	<defaultCache maxElementsInMemory="50000" memoryStoreEvictionPolicy="LRU" eternal="false"

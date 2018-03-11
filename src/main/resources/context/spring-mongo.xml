@@ -18,7 +18,7 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
 
-	<bean id="mongodbDao" class="com.gdtopway.core.dao.mongo.MongoGenerialDaoImpl" init-method="init" destroy-method="destroy">
+	<bean id="mongodbDao" class="com.tianzhu.core.dao.mongo.MongoGenerialDaoImpl" init-method="init" destroy-method="destroy">
 		<property name="mongoHost" value="${mongo_host}" />
 		<property name="mongoPort" value="${mongo_port}" />
 		<property name="mongoDB" value="${mongo_dbname}" />

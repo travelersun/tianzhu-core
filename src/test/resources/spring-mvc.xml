@@ -19,7 +19,7 @@
 	</bean>
 
     <!-- 自动扫描且只扫描@Controller -->
-	<context:component-scan base-package="com.gdtopway" use-default-filters="false">
+	<context:component-scan base-package="com.tianzhu" use-default-filters="false">
 		<context:include-filter type="annotation" expression="org.springframework.web.servlet.config.annotation.EnableWebMvc" />
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
 		<context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice" />
@@ -40,7 +40,7 @@
 		<property name="defaultViewInclusion" value="true" />
 		<property name="serializers">
 			<array>
-				<bean class="com.gdtopway.core.web.json.DateTimeJsonSerializer" />
+				<bean class="com.tianzhu.core.web.json.DateTimeJsonSerializer" />
 			</array>
 		</property>
 		<!--  
@@ -71,7 +71,7 @@
 		</mvc:message-converters>
 	</mvc:annotation-driven>
 
-	<bean class="com.gdtopway.core.web.exception.AnnotationHandlerMethodExceptionResolver">
+	<bean class="com.tianzhu.core.web.exception.AnnotationHandlerMethodExceptionResolver">
 		<property name="contentNegotiationManager" ref="contentNegotiationManager" />
 	</bean>
 

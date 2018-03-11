@@ -30,8 +30,8 @@
 		</property>
 		<property name="packagesToScan">
 			<list>
-				<value>com.gdtopway.core.audit.envers</value>
-				<value>com.gdtopway.**.entity</value>
+				<value>com.tianzhu.core.audit.envers</value>
+				<value>com.tianzhu.**.entity</value>
 			</list>
 		</property>
 		<property name="jpaProperties">
@@ -73,9 +73,9 @@
 	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
 
 	<!-- Spring Data JPA配置 -->
-	<jpa:repositories base-package="com.gdtopway.**.dao" transaction-manager-ref="transactionManager"
+	<jpa:repositories base-package="com.tianzhu.**.dao" transaction-manager-ref="transactionManager"
 		entity-manager-factory-ref="entityManagerFactory">
-		<repository:exclude-filter type="regex" expression="com.gdtopway.core.*" />
+		<repository:exclude-filter type="regex" expression="com.tianzhu.core.*" />
 	</jpa:repositories>
 
 </beans>

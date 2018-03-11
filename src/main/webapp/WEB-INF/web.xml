@@ -16,23 +16,23 @@
     <param-value>development</param-value>
   </context-param>
   <listener>
-    <listener-class>com.gdtopway.core.web.listener.ApplicationContextPreListener</listener-class>
+    <listener-class>com.tianzhu.core.web.listener.ApplicationContextPreListener</listener-class>
   </listener>
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
   <listener>
-    <listener-class>com.gdtopway.core.web.listener.ApplicationContextPostListener</listener-class>
+    <listener-class>com.tianzhu.core.web.listener.ApplicationContextPostListener</listener-class>
   </listener>
   <listener>
     <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
   </listener>
   <listener>
-    <listener-class>com.gdtopway.core.web.listener.AuthLogonHistRefreshListener</listener-class>
+    <listener-class>com.tianzhu.core.web.listener.AuthLogonHistRefreshListener</listener-class>
   </listener>
   <servlet>
     <servlet-name>jcaptcha</servlet-name>
-    <servlet-class>com.gdtopway.core.web.captcha.ImageCaptchaServlet</servlet-class>
+    <servlet-class>com.tianzhu.core.web.captcha.ImageCaptchaServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>jcaptcha</servlet-name>
@@ -70,7 +70,7 @@
   </servlet-mapping>
   <filter>
     <filter-name>webAppContextInitFilter</filter-name>
-    <filter-class>com.gdtopway.core.web.filter.WebAppContextInitFilter</filter-class>
+    <filter-class>com.tianzhu.core.web.filter.WebAppContextInitFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>webAppContextInitFilter</filter-name>
@@ -124,7 +124,7 @@
   </filter-mapping>
   <filter>
     <filter-name>httpRequestLogFilter</filter-name>
-    <filter-class>com.gdtopway.core.web.filter.HttpRequestLogFilter</filter-class>
+    <filter-class>com.tianzhu.core.web.filter.HttpRequestLogFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>httpRequestLogFilter</filter-name>
@@ -132,7 +132,7 @@
   </filter-mapping>
   <filter>
     <filter-name>sitemeshFilter</filter-name>
-    <filter-class>com.gdtopway.core.web.sitemesh.ParamConfigurableSiteMeshFilter</filter-class>
+    <filter-class>com.tianzhu.core.web.sitemesh.ParamConfigurableSiteMeshFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>sitemeshFilter</filter-name>

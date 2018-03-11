@@ -13,7 +13,7 @@
 	<logger name="druid.sql" level="DEBUG" additivity="false">
 		<appender-ref ref="STDOUT" />
 	</logger>
-	<logger name="com.gdtopway" level="DEBUG" additivity="false">
+	<logger name="com.tianzhu" level="DEBUG" additivity="false">
 		<appender-ref ref="STDOUT" />
 	</logger>
 

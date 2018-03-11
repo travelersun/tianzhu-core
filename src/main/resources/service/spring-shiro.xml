@@ -18,12 +18,12 @@
 	-->
 	
     <!-- shiro cache using EhCache 设置depends-on="cacheManager"，确保共享模式下优先加载Spring CacheManager -->
-	<bean id="shiroCacheManager" class="com.gdtopway.core.security.SharedEhCacheManager" depends-on="cacheManager">
+	<bean id="shiroCacheManager" class="com.tianzhu.core.security.SharedEhCacheManager" depends-on="cacheManager">
 		<property name="cacheManagerConfigFile" value="classpath:ehcache-config.xml" />
 		<property name="shared" value="true" />
 	</bean>
 
-	<bean id="shiroJdbcRealm" class="com.gdtopway.core.security.ShiroJdbcRealm">
+	<bean id="shiroJdbcRealm" class="com.tianzhu.core.security.ShiroJdbcRealm">
 		<property name="passwordService" ref="passwordService" />
 		<property name="userService" ref="userService" />
 	</bean>
@@ -45,33 +45,33 @@
 		<property name="cacheManager" ref="shiroCacheManager" />
 	</bean>
 
-	<bean id="anyRolesAuthorizationFilter" class="com.gdtopway.core.security.AnyRolesAuthorizationFilter" />
+	<bean id="anyRolesAuthorizationFilter" class="com.tianzhu.core.security.AnyRolesAuthorizationFilter" />
 
-	<bean id="wwwJcaptchaFormAuthenticationFilter" class="com.gdtopway.core.security.JcaptchaFormAuthenticationFilter">
+	<bean id="wwwJcaptchaFormAuthenticationFilter" class="com.tianzhu.core.security.JcaptchaFormAuthenticationFilter">
 		<property name="loginUrl" value="/w/login" />
 		<property name="successUrl" value="/w" />
 		<property name="userService" ref="userService" />
 	</bean>
 
-	<bean id="mobileJcaptchaFormAuthenticationFilter" class="com.gdtopway.core.security.JcaptchaFormAuthenticationFilter">
+	<bean id="mobileJcaptchaFormAuthenticationFilter" class="com.tianzhu.core.security.JcaptchaFormAuthenticationFilter">
 		<property name="loginUrl" value="/m/login" />
 		<property name="successUrl" value="/m" />
 		<property name="userService" ref="userService" />
 	</bean>
 
-	<bean id="adminJcaptchaFormAuthenticationFilter" class="com.gdtopway.core.security.JcaptchaFormAuthenticationFilter">
+	<bean id="adminJcaptchaFormAuthenticationFilter" class="com.tianzhu.core.security.JcaptchaFormAuthenticationFilter">
 		<property name="loginUrl" value="/admin/login" />
 		<property name="successUrl" value="/admin" />
 		<property name="userService" ref="userService" />
 	</bean>
 
 
-	<bean id="appFormAuthenticationFilter" class="com.gdtopway.core.security.JcaptchaFormAuthenticationFilter">
+	<bean id="appFormAuthenticationFilter" class="com.tianzhu.core.security.JcaptchaFormAuthenticationFilter">
 		<property name="loginUrl" value="/app/login" />
 		<property name="userService" ref="userService" />
 	</bean>
 
-	<bean id="appBasicAuthenticationFilter" class="com.gdtopway.core.security.AppBasicAuthenticationFilter">
+	<bean id="appBasicAuthenticationFilter" class="com.tianzhu.core.security.AppBasicAuthenticationFilter">
 		<property name="appKeySecrets">
 			<props>
 				<prop key="auth_app_android">${auth_app_android}</prop>
@@ -82,7 +82,7 @@
 		</property>
 	</bean>
 
-	<bean id="bearerTokenAuthenticatingFilter" class="com.gdtopway.core.security.BearerTokenAuthenticatingFilter">
+	<bean id="bearerTokenAuthenticatingFilter" class="com.tianzhu.core.security.BearerTokenAuthenticatingFilter">
 
 	</bean>
 
@@ -98,7 +98,7 @@
 		<property name="redirectUrl" value="/admin" />
 	</bean>
 
-	<bean id="appLogoutFilter" class="com.gdtopway.core.security.AppLogoutFilter">
+	<bean id="appLogoutFilter" class="com.tianzhu.core.security.AppLogoutFilter">
 		<property name="userService" ref="userService" />
 	</bean>
 	
