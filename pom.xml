@@ -736,11 +736,11 @@
 		</dependency>
 
         <!-- https://github.com/nguyenq/tess4j -->
-		<dependency>
+		<!--<dependency>
 			<groupId>net.sourceforge.tess4j</groupId>
 			<artifactId>tess4j</artifactId>
 			<version>2.0.1</version>
-		</dependency>		
+		</dependency>	-->
 
 		<!-- jetty standard runtime-->
 		<dependency>

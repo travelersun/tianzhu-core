@@ -31,7 +31,7 @@
 <div class="form-group">
 <span class="input-icon">
 <input class="form-control" data-val="true" data-val-required="请输入 图片验证码" id="CaptchaCode" name="tempdata" placeholder="等式计算结果" type="text" value="">
-<img id="imgCaptchaCode" style="position:absolute;top:-1px;right:5px;" src="/pub/jcaptcha.servlet">
+<img id="imgCaptchaCode" style="position:absolute;top:-7px;right:5px;" src="/pub/jcaptcha.servlet">
 </span>
 </div>
 <span class="field-validation-valid form-error" data-valmsg-for="CaptchaCode" data-valmsg-replace="true"></span>
