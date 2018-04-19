@@ -161,7 +161,7 @@ public class UtilController {
             if (entities.size() == 1) {// 查询到一条重复数据
                 String id = request.getParameter("id");
                 if (StringUtils.isNotBlank(id)) {
-                    String entityId = ((Long) entities.get(0)).toString();
+                    String entityId = ((String) entities.get(0)).toString();
                     logger.debug("Check Unique Entity ID = {}", entityId);
                     if (id.equals(entityId)) {// 查询到数据是当前更新数据，不算已存在
                         return true;
